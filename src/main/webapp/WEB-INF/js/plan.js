@@ -1,9 +1,9 @@
         let contentCnt = 12;
         let currentMonth=6;
         let margin=20;
-
+    	
         $(document).ready(() => {
-        	$('.header').load("resources/header.html?ver=1");
+        	$('.header').load("/resources/header.html?ver=3");
             if(currentMonth!=1){       
             	margin-=60*(currentMonth-1);
                 $('.content-wrap').css('margin-left', margin + 'vw');

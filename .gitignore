@@ -12,7 +12,7 @@ tmp/
 local.properties
 .loadpath
 .recommenders
-
+.settings/
 # External tool builders
 .externalToolBuilders/
 
