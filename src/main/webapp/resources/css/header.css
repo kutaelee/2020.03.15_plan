@@ -1,0 +1,22 @@
+.header{
+	position: sticky;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 10%;
+    top: 0;
+}
+.nav {
+	padding: 1%;
+}
+.nav ul{
+	color:white;
+}
+.nav li {
+	list-style: none;
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 3%;
+}
+.nav li:nth-child(1){
+	margin-left: 2%;
+}
