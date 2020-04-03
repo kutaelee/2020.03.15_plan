@@ -17,7 +17,7 @@
                     + '<div class="content-header"><p>' + i + '월</p></div>'
                     + '<div class="content-body"> 내용 </div> </sesction>');
             }
-            $('#section'+currentMonth+' .content-header').css('background','#3e3939');
+            $('#section'+currentMonth+' .content-header').css('background','#217093');
             $('#section'+currentMonth+' .content-header').css('text-align','center');
         	$('#section'+(currentMonth-1)+' .content-header').css('text-align','right');
         	$('#section'+(currentMonth+1)+' .content-header').css('text-align','left');
@@ -44,7 +44,7 @@
             	
             	 $('.content-wrap').css('margin-left', margin + 'vw');    
             	$('.content-header').css('background','grey');
-            	$('#section'+currentMonth+' .content-header').css('background','#3e3939');
+            	$('#section'+currentMonth+' .content-header').css('background','#217093');
                 $('#section'+currentMonth+' .content-header').css('text-align','center');
             	$('#section'+(currentMonth-1)+' .content-header').css('text-align','right');
             	$('#section'+(currentMonth+1)+' .content-header').css('text-align','left');

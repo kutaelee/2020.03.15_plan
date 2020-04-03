@@ -153,7 +153,7 @@ form .inputGroup1 .helper {
 
 form .inputGroup1 .helper1 {
 	top: 0;
-	left: 0;
+	left: 20px;
 	transform: translate(.2em, 1.2em) scale(1);
 	transform-origin: 0 0;
 	color: #217093;
@@ -166,7 +166,7 @@ form .inputGroup1 .helper1 {
 
 form .inputGroup1.focusWithText .helper {
 	transform: translate(.2em, .7em) scale(0.6);
-    opacity: .6;
+	opacity: .6;
 }
 
 form .inputGroup2 input[type="password"] {

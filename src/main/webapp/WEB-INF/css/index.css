@@ -1,0 +1,144 @@
+body {
+	background: #010615;
+}
+
+#layer1 {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	width: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+	min-height: 100vh;
+	display: flex;
+	z-index: -3;
+	align-items: center;
+}
+
+.box {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 40px;
+	transition: .5s;
+	background: #060c21;
+}
+
+.box .imgBx {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.box:hover {
+	height: 400px;
+}
+
+.box .imgBx img {
+	width: 100%;
+	height: 300px;
+	opacity: .1;
+	transition: .5s;
+}
+
+.box:hover .imgBx img {
+	opacity: 1;
+}
+
+.box:before {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: #fff;
+	z-index: -1;
+}
+
+.box:after {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: #fff;
+	z-index: -2;
+	filter: blur(40px);
+}
+
+.box:before, .box:after {
+	background: linear-gradient(235deg, #89ff00, #010615, #00bcd4);
+}
+
+.box:nth-child(2):before, .box:nth-child(2):after {
+	background: linear-gradient(235deg, #ff005e, #010615, #fbff00);
+}
+
+.box:nth-child(3):before, .box:nth-child(3):after {
+	background: linear-gradient(235deg, #772aff, #010615, #2196F3);
+}
+
+.box:nth-child(4):before, .box:nth-child(4):after {
+	background: linear-gradient(235deg, #e37e16, #010615, #9d5cf2);
+}
+.box:nth-child(5):before, .box:nth-child(5):after {
+	background: linear-gradient(235deg, #4fbb6b, #010615, #3175da);
+}
+.box .content {
+	position: absolute;
+	bottom: 0;
+	left: 10px;
+	right: 10px;
+	height: 90px;
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: .5s;
+}
+
+.box:hover .content {
+	opacity: 1;
+}
+
+.box .content h2 {
+	font-size: 20px;
+	color: #fff;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+.box .content h2 span {
+	font-size: 14px;
+	color: #fff;
+	font-weight: 200;
+	letter-spacing: 2px;
+}
+
+#layer2 {
+	width: 100%;
+	height: 100vh;
+	background: white;
+}
+
+.content-box {
+	width: 30%;
+	margin: 1.5%;
+	background: white;
+	height: 80%;
+	box-shadow: 0 1px 5px grey;
+	border-radius: 10px;
+	display: inline-block;
+}
