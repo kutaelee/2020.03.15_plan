@@ -3,14 +3,73 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link href="/css/management.css?ver=4" rel="stylesheet" type="text/css" />
-<script src="/js/management.js?ver=1" type="text/javascript"></script>
+<link href="/css/management.css?ver=6" rel="stylesheet" type="text/css" />
+<script src="/js/management.js?ver=2" type="text/javascript"></script>
 </head>
 
 <body>
 	<div class="header"></div>
 	<div class="layer" id="layer1">
-	index
+	<h1 id="content-head">유지보수 관리</h1>
+	<div class="btn-wrap">
+		<button id="modify-btn">관리</button>
+		<button id="insert-btn">등록</button>
+		</div>
+	<div class="solt-wrap">
+		<select name="list" id="list-count">
+    <option value="min">10개</option>
+    <option value="half">50개</option>
+    <option value="max">100개</option>
+</select>
+<select name="kind">
+    <option value="writer">작성자</option>
+    <option value="title">제목</option>
+</select>
+<input type="text" placeholder="검색어를 입력하세요.">
+<button id="search-btn">검색</button>
+
+	</div>
+		<table class="board">
+			<tr class="t-head">
+				<th>번호</th>
+				<th>제목</th>
+				<th>유지보수 시작일</th>
+				<th>유지보수 종료일</th>
+			</tr>
+			<tr class="t-content"><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>
+				<tr class="t-content"><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>
+		</table>
+		<div class="page-btn-wrap">
+			<span id="first-btn"><<</span>
+			<span id="prev-btn"><</span>
+			<span id="current-page">1</span>
+			<span id="next-btn">></span>
+			<span id="last-btn">>></span>
+		</div>
 	</div>
 </body>
 

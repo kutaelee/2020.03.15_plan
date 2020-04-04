@@ -26,9 +26,6 @@ public class HomeController {
 	}
 	@GetMapping(value = "/page/{pageName}")
 	public String page(@PathVariable String pageName) {
-		if(pageName.isBlank()||pageName.isEmpty()) {
-			return "notfound";
-		}
 		return pageName;
 	}
 	/*
