@@ -1,9 +1,12 @@
-        let contentCnt = 12;
-        let currentMonth=6;
+        
+		let now=new Date();
+		let contentCnt = 12;
+        let currentMonth=now.getMonth()+1;
         let margin=20;
     	
         $(document).ready(() => {
-        	$('.header').load("/resources/header.html?ver=5");
+        	$('.header').load("/resources/header.html?ver=8");
+        	console.log('a')
             if(currentMonth!=1){       
             	margin-=60*(currentMonth-1);
                 $('.content-wrap').css('margin-left', margin + 'vw');
@@ -15,7 +18,7 @@
                 $('.content-wrap').append('<section class="content-section" id="section' + i + '">'
                     + '<div class="content">'
                     + '<div class="content-header"><p>' + i + '월</p></div>'
-                    + '<div class="content-body"> 내용 </div> </sesction>');
+                    + '<div class="content-body"> <div class="yet"><h2> 점검 예정</h2> </div> <div class="complete"><h2> 점검 완료 </h2> </div> </div> </sesction>');
             }
             $('#section'+currentMonth+' .content-header').css('background','#217093');
             $('#section'+currentMonth+' .content-header').css('text-align','center');
@@ -39,7 +42,7 @@
                         currentMonth=1;
                         margin=20;
                     }
-                              
+                    $('.current-month h1').text(currentMonth+'월');
             	}
             	
             	 $('.content-wrap').css('margin-left', margin + 'vw');    
@@ -49,7 +52,13 @@
             	$('#section'+(currentMonth-1)+' .content-header').css('text-align','right');
             	$('#section'+(currentMonth+1)+' .content-header').css('text-align','left');
             });
-            $('#minus-btn').click(()=>{
-                $('.content-section').css('width','35vw');
-            });
+            $('.current-month h1').text(currentMonth+'월');
+            $('.current-month').hide();
+        	window.onscroll = function() {
+        		if($(window).scrollTop()>100){
+        			$('.current-month').fadeIn();
+        		}else{
+        			$('.current-month').fadeOut();
+        		}
+        	}
         });
