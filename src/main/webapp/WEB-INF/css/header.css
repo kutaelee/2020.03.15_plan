@@ -49,10 +49,12 @@ p,a{
 .nav a {
 	text-decoration: none;
     text-decoration: none;
-    color: white;
+    color: gray;
     font-weight: 1000;
 }
-
+.nav a:hover{
+	color:white;
+}
 #login, #join {
 	float: right;
 }
