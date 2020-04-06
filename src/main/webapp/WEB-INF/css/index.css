@@ -1,8 +1,8 @@
 body {
 	background: #010615;
-}
-.body{
-		overflow: hidden;
+	  margin: 0;
+      padding: 0;
+      overflow: hidden;
 }
 #wrap {
 	overflow-y: scroll;
@@ -29,15 +29,12 @@ body {
 	animation: animate 5s linear infinite;
 }
 
-@
-keyframes animate { 0% , 100% {
+@keyframes animate { 0% , 100% {
 	filter: hue-rotate(0deg);
 }
 
 50%{
-filter
-:hue-rotate(360deg)
-;
+	filter:hue-rotate(360deg);
 
 	
 }
@@ -64,7 +61,7 @@ filter
 	filter: blur(30px);
 }
 
-#layer1 {
+#member-layer {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -191,7 +188,7 @@ filter
 	letter-spacing: 2px;
 }
 
-#layer2 {
+#util-layer {
 	width: 100%;
 	height: 100vh;
 	background: #010615;
@@ -205,4 +202,122 @@ filter
 	box-shadow: 0 1px 5px grey;
 	border-radius: 10px;
 	display: inline-block;
+}
+
+#cube-layer{
+	    width: 100%;
+    height: 130%;
+    margin: 10% 0;
+    padding: 0;
+}
+.swiper-container {
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      top: 25%;
+      margin-left: -150px;
+      margin-top: -150px;
+    }
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      	background:white;
+    }
+    
+#skew-layer{
+	width: 60%;
+	min-height: 100%;
+	margin:0;
+	padding:0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-left:30%;
+}
+.container{
+	position: relative;
+	margin-top:250px;
+	max-width:80%;
+	transform:skewY(-20deg);
+	margin-bottom:5%;
+}
+.container .imgBx{
+	position: relative;
+	width:100%;
+	height:180px;
+	transform-origin:bottom;
+	transform:skewX(45deg);
+}
+
+.container .imgBx img{
+	position: absolute;
+    top: -170;
+    left: -100px;
+	filter:grayscale(1);
+	max-width: 100%;
+	transition:.5s;
+}
+
+.container .imgBx:hover img:nth-child(3){
+	transform:translate(100px,-100px);
+}
+.container .imgBx:hover img:nth-child(2){
+	transform:translate(50px,-50px);
+	opacity: 0.5;
+}
+.container .imgBx:hover img:nth-child(1){
+	transform:translate(0px,0px);
+	opacity: 0.1;
+}
+.container h2{
+	position: relative;
+	color: #fff;
+	font-size:4em;
+}
+
+.container .skew{
+	transform-origin:top;
+	transform:skewX(45deg);
+}
+
+.container .skew p{
+	color:#fff;
+	font-size:1.2em;
+}
+.container .skew a{
+	position:relative;
+	padding: 10px 30px;
+	display: inline-block;
+	background: transparent;
+	color:#fff;
+	transform-origin:top;
+	margin-top:20px;
+	border:2px solid #fff;
+	transform:skewX(-45deg);
+	letter-spacing: 2px;
+	font-size:20px;
+	transition:.5s;
+}
+.container .skew a:hover{
+	color:#000;
+	background: #fff;
+	cursor: pointer;
+}
+
+#scrollSpy{
+	position: absolute;
+    color: white;
+    text-align: center;
+    margin-top: 3%;
+    z-index: 10;
+    background: rgba(0,0,0,.8);
+    padding: 1%;
+    border-radius: 10%;
+    margin-left: 88%;
+}
+#scrollSpy a{
+	display: block;
+	margin-bottom:15%;
+	cursor: pointer;
 }
