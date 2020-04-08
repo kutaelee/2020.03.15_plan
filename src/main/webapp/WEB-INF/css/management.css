@@ -3,10 +3,8 @@ body {
 }
 
 .board {
-	width: 80%;
 	border-collapse: collapse;
-	margin-left: 10%;
-	height: 60%;
+	min-height: 60%;
 	background: white;
 	box-shadow: 2px 2px 5px grey;
 }
@@ -38,8 +36,6 @@ body {
 }
 
 .btn-wrap {
-	width: 80%;
-	margin-left: 10%;
 	text-align: right;
 	margin-bottom: 1%;
 }
@@ -71,7 +67,6 @@ body {
 
 .page-btn-wrap {
 	width: 80%;
-	margin-left: 10%;
 	text-align: center;
 	margin-top: 2%;
 	font-weight: 500;
@@ -94,19 +89,19 @@ body {
 	color:white;
 }
 
-.solt-wrap {
+.sort-wrap {
 	width: 80%;
 	margin-left: 10%;
 	text-align: right;
 	margin-bottom: 5px;
 }
 
-.solt-wrap select {
+.sort-wrap select {
 	padding: 5px 5px;
 	box-shadow: 0px 1px 3px grey;
 }
 
-.solt-wrap input {
+.sort-wrap input {
 	padding: 8px;
 	box-shadow: 0px 1px 3px grey;
 	border: none;
@@ -130,6 +125,8 @@ body {
 }
 
 #layer1 {
+	overflow-x: auto;
+    min-height: 100%;
 	margin-bottom: 2%;
 }
 #current-page{

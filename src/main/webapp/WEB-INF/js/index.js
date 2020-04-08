@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var progress = document.getElementById('progressbar');
 	var wrap = document.getElementById('wrap');
 	var totalHeight = wrap.scrollHeight - window.innerHeight;
-	
+
 	$('#nav1').css('color','white');
 	wrap.onscroll = function() {
 		//scroll bar 
@@ -45,7 +45,7 @@ $(document).ready(function() {
 			}, 400);
 		} else if (selectNum == 3) {
 			$('#wrap').animate({
-				scrollTop : offset3-150
+				scrollTop : offset3
 			}, 400);
 		} else if (selectNum == 4) {
 
