@@ -6,7 +6,6 @@
     	
         $(document).ready(() => {
         	$('.header').load("/resources/header.html?ver=8");
-        	console.log('a')
             if(currentMonth!=1){       
             	margin-=60*(currentMonth-1);
                 $('.content-wrap').css('margin-left', margin + 'vw');

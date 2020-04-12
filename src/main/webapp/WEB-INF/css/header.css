@@ -18,11 +18,11 @@ body {
 	margin: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3 , label {
 	font-family: NanumGothic-Bold;
 }
 
-p, a {
+p, a , input{
 	font-family: "NanumGothic-Regular";
 }
 

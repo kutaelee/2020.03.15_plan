@@ -1,5 +1,7 @@
+body{
+	background: whitesmoke;
+}
 #layer1 {
-	background: white;
 	height: 100vh;
 }
 

@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link href="/css/management-write.css?ver=8" rel="stylesheet" type="text/css" />
+<script src="/js/management-write.js?ver=7" type="text/javascript"></script>
+</head>
+
+<body>
+	<div class="header"></div>
+	
+	<div class="layer">
+		<form onsubmit="return false">
+		<h2>유지보수 등록</h2>
+			<label>사업명</label>
+			<input type="text">
+			<label>사이트명</label>
+			<button id="site-search-btn">선택</button>
+			<input type="text">
+			<label>영업대표</label>
+			<input type="text">
+			<label>유지보수 시작일</label><button class="year-btn" id="year1">1년</button><button class="year-btn" id="year2">2년</button><button class="year-select" id="year3">선택안함</button>
+			<input type="date" id="startDay">
+			<label>유지보수 종료일</label>
+			<input type="date" id="endDay">
+			<button id="submit-btn">등록</button>
+		</form>
+	</div>
+</body>
+
+</html>

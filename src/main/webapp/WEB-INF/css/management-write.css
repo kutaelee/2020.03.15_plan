@@ -1,0 +1,82 @@
+body {
+	background: whitesmoke;
+}
+
+.layer form {
+	width: 40%;
+	height: 75%;
+	background: white;
+	box-shadow: 1px 3px 5px grey;
+	border-radius: 10px;
+	margin-left: 30%;
+	margin-top: 2%;
+}
+
+.layer label {
+	font-weight: 1000;
+	margin-left: 10%
+}
+
+.layer button {
+	color: white;
+	padding: 3px;
+	letter-spacing: 1px;
+	border-radius: 5px;
+	opacity: .8;
+	outline: none;
+	cursor: pointer;
+}
+
+#site-search-btn {
+	background: black;
+	border: 1px solid black;
+}
+
+.layer h2 {
+	text-align: center;
+	font-weight: 1000;
+	width: 100%;
+	margin: 15px 0px;
+	background: black;
+	color: white;
+	padding: 15px 0px;
+	opacity: .9;
+}
+
+.layer input {
+	display: block;
+	width: 80%;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #989d9f;
+	margin: 10px 10%;
+	outline: none;
+	letter-spacing: 1px;
+	padding: 1%;
+}
+
+.year-btn {
+	background: black;
+	border: 1px solid black;
+	margin-left: 10px;
+}
+
+.year-select {
+	background: red;
+	border: 1px solid red;
+	margin-left: 10px;
+}
+
+#submit-btn {
+	width: 80%;
+	margin-left: 10%;
+	font-size: 20px;
+	margin-top: 2%;
+	padding: 15px;
+	background: black;
+	border: 1px solid black;
+}
+
+#submit-btn:hover {
+	opacity: 1;
+}

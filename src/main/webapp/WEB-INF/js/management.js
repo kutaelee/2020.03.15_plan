@@ -1,8 +1,8 @@
  $(document).ready(() => {
 	 $('.header').load("/resources/header.html?ver=1");
-	 
+
 	 var width=$(document).width()-$(document).width()/10;
-	 if(width>600){
+	 if(width>1000){
 		 $('.board').width(width+'px');
 		 $('.board').css('margin-left',width/20+'px');
 		 $('.btn-wrap').width(width+'px');
@@ -14,5 +14,8 @@
 		 $('.board').width('600px');
 		 $('.board').css('margin-left','30px');
 	 }
-
+	 
+	 $('#insert-btn').click(function(){
+		 document.location.href="/page/management-write";
+	 });
  });
