@@ -40,12 +40,23 @@
 		 }
 	 });
 	 $(document).on('click','.t-content',function(){
-		var chk=document.getElementById($(this).children('.td-check').children().attr('id'));
-		if(chk.checked){
-			chk.checked=false;
-		}else{
-			chk.checked=true;
-		}
+		 console.log($(this).attr('class'));
+			var chk=document.getElementById($(this).children('.td-check').children().attr('id'));
+			if(chk.checked){
+				chk.checked=false;
+			}else{
+				chk.checked=true;
+			}
+	 });
+	 
+	 $(document).on('click','.checkBx',function(){
+		 console.log($(this).attr('class'));
+			var chk=document.getElementById($(this).attr('id'));
+			if(chk.checked){
+				chk.checked=false;
+			}else{
+				chk.checked=true;
+			}
 	 });
 	 
 	 $('.board').html('<tr class="t-head">'
