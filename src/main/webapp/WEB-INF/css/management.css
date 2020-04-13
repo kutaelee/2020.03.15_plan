@@ -8,7 +8,9 @@ body {
 	background: white;
 	box-shadow: 2px 2px 5px grey;
 }
-
+#board-wrap{
+	overflow-x:scroll;
+}
 .board th, .board td {
 	padding: 1%;
 }
@@ -38,6 +40,8 @@ body {
 .btn-wrap {
 	text-align: right;
 	margin-bottom: 1%;
+	    width: 87%;
+    margin-left: 7%;
 }
 
 .btn-wrap button {
@@ -56,9 +60,17 @@ body {
 .btn-wrap button:hover {
 	opacity: 1;
 }
-
-#modify-btn {
+#cansel-btn{
+	background: black;
+}
+#delete-btn{
+	background: red;
+}
+#man-btn{
 	background: #faab17;
+}
+#modify-btn {
+	background: #217093;
 }
 
 #insert-btn {
@@ -66,7 +78,7 @@ body {
 }
 
 .page-btn-wrap {
-	width: 80%;
+	width: 87%;
 	text-align: center;
 	margin-top: 2%;
 	font-weight: 500;
@@ -90,8 +102,8 @@ body {
 }
 
 .sort-wrap {
-	width: 80%;
-	margin-left: 10%;
+	width: 87%;
+	margin-left: 7%;
 	text-align: right;
 	margin-bottom: 5px;
 }
@@ -125,11 +137,26 @@ body {
 }
 
 #layer1 {
-	overflow-x: auto;
     min-height: 100%;
 	margin-bottom: 2%;
 }
 #current-page{
 	background: black;
 	color:white;
+}
+#stat{
+	float:left;
+	margin-right:5px;
+}
+
+#man-btn-wrap{
+	display: none;
+}
+
+#th-check,.td-check,#all-check{
+	display: none;
+}
+#td-check input,#all-check{
+	height: 13px;
+    width: 13px;
 }

@@ -19,7 +19,7 @@
                     + '<div class="content-header"><p>' + i + '월</p></div>'
                     + '<div class="content-body"> <div class="yet"><h2> 점검 예정</h2> </div> <div class="complete"><h2> 점검 완료 </h2> </div> </div> </sesction>');
             }
-            $('#section'+currentMonth+' .content-header').css('background','#217093');
+            $('#section'+currentMonth+' .content-header').css('background','black');
             $('#section'+currentMonth+' .content-header').css('text-align','center');
         	$('#section'+(currentMonth-1)+' .content-header').css('text-align','right');
         	$('#section'+(currentMonth+1)+' .content-header').css('text-align','left');
@@ -46,7 +46,7 @@
             	
             	 $('.content-wrap').css('margin-left', margin + 'vw');    
             	$('.content-header').css('background','grey');
-            	$('#section'+currentMonth+' .content-header').css('background','#217093');
+            	$('#section'+currentMonth+' .content-header').css('background','black');
                 $('#section'+currentMonth+' .content-header').css('text-align','center');
             	$('#section'+(currentMonth-1)+' .content-header').css('text-align','right');
             	$('#section'+(currentMonth+1)+' .content-header').css('text-align','left');

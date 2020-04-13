@@ -4,13 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link href="/css/management-write.css?ver=8" rel="stylesheet" type="text/css" />
-<script src="/js/management-write.js?ver=7" type="text/javascript"></script>
+<link href="/css/management-write.css?ver=10" rel="stylesheet" type="text/css" />
+<script src="/js/management-write.js?ver=9" type="text/javascript"></script>
 </head>
 
 <body>
 	<div class="header"></div>
-	
+	<div class="modal">
+	<div id="site-modal">
+	<div id="close-wrap"><button id="modal-close-btn">X</button></div>
+	<div id="site-search">
+	<label>사이트명:</label>
+		<input type="text"><button>검색</button></div>
+		<div id="site">
+		<span><a>근복단</a></span>,<span><a>근로복지공단</a></span>,<span><a>한국무술협회</a></span>,<span><a>근로복지공단</a></span>,<span><a>근로복지공단</a></span>
+		</div>
+	</div>
+	</div>
 	<div class="layer">
 		<form onsubmit="return false">
 		<h2>유지보수 등록</h2>
@@ -25,6 +35,13 @@
 			<input type="date" id="startDay">
 			<label>유지보수 종료일</label>
 			<input type="date" id="endDay">
+			<label>유지보수 담당자</label><br/>
+			<select name="manager" id="manager">
+				<option value="">나중에 등록</option>
+   				<option value="현상원">현상원</option>
+    			<option value="이상인">이상인</option>
+    			<option value="이유훈">이유훈</option>
+			</select>
 			<button id="submit-btn">등록</button>
 		</form>
 	</div>

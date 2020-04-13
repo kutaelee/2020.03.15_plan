@@ -4,24 +4,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link href="/css/management.css?ver=8" rel="stylesheet" type="text/css" />
-<script src="/js/management.js?ver=5" type="text/javascript"></script>
+<link href="/css/management.css?ver=11" rel="stylesheet" type="text/css" />
+<script src="/js/management.js?ver=10" type="text/javascript"></script>
 </head>
 
 <body>
 	<div class="header"></div>
 	<div class="layer" id="layer1">
 	<h1 id="content-head">유지보수 관리</h1>
-	<div class="btn-wrap">
-		<button id="modify-btn">관리</button>
+	<div class="btn-wrap" id="default-btn-wrap">
+		<button id="man-btn">관리</button>
 		<button id="insert-btn">등록</button>
 		</div>
+		<div class="btn-wrap" id="man-btn-wrap">
+			<button id="cansel-btn">취소</button>
+		<button id="delete-btn">삭제</button>
+		<button id="modify-btn">수정</button>
+		</div>
 	<div class="sort-wrap">
-		<select name="list" id="list-count">
+		<select name="stat" id="stat">
+    <option value="min">진행</option>
+    <option value="half">종료</option>
+    <option value="max">예정</option>
+</select>
+		<select name="list-count" id="list-count">
     <option value="min">10개</option>
     <option value="half">50개</option>
     <option value="max">100개</option>
 </select>
+	
 <select name="kind">
     <option value="writer">작성자</option>
     <option value="title">제목</option>
@@ -30,43 +41,60 @@
 <button id="search-btn">검색</button>
 
 	</div>
+	<div id="board-wrap">
 		<table class="board">
 			<tr class="t-head">
+			<th id="th-check">선택 <input type="checkbox" id="all-check"></th>
 				<th>계약상태</th>
 				<th>사업명</th>
 				<th>사이트명</th>
 				<th>영업부서</th>
 				<th>유지보수 시작일</th>
 			</tr>
-			<tr class="t-content"><td><div>hi</div></td>
+			<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx" id="chBx1"></td><td><div>hi</div></td>
 			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 		<td><div>hi</div></td>
 			</tr>
-				<tr class="t-content"><td><div>hi</div></td>
+				<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx" id="chBx2"></td><td><div>hi</div></td>
 				<td><div>hi</div></td>
 			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 		<td><div>hi</div></td>
-			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			</tr>		
+						<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx"></td><td><div>hi</div></td>
 			<td><div>hi</div></td>
-			<td><div>hi</div></td>
-		<td><div>hi</div></td>
-			</tr>			<tr class="t-content"><td><div>hi</div></td>
 			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 		<td><div>hi</div></td>
-			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			</tr>
+						<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx"></td><td><div>hi</div></td>
+			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 		<td><div>hi</div></td>
-			</tr>			<tr class="t-content"><td><div>hi</div></td>
+			</tr>
+						<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx"></td><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>
+						<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx"></td><td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+			<td><div>hi</div></td>
+		<td><div>hi</div></td>
+			</tr>
+						<tr class="t-content"><td class="td-check"><input type="checkbox" class="checkBx"></td><td><div>hi</div></td>
+			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 			<td><div>hi</div></td>
 		<td><div>hi</div></td>
 			</tr>
 		</table>
+		</div>
 		<div class="page-btn-wrap">
 			<span id="first-btn"><<</span>
 			<span id="prev-btn"><</span>

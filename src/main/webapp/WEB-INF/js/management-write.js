@@ -1,7 +1,6 @@
 $(document).ready(function() {
-	$('.header').load("/resources/header.html?ver=2");
-	$('#management-btn').css('color', 'white');
-
+	$('.header').load("/resources/header.html?ver=3");
+	/* date */
 	$(document).on('click', '.year-btn', function(e) {
 		$('.year-select').attr('class', 'year-btn');
 		$(this).attr('class', 'year-select');
@@ -17,7 +16,6 @@ $(document).ready(function() {
 				$('#startDay').val(date.format("yyyy-MM-dd"));
 				$('#endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format("yyyy-MM-dd"));
 			}else{
-				$('#startDay').val('');
 				$('#endDay').val('');
 			}
 		}else{
@@ -28,10 +26,18 @@ $(document).ready(function() {
 			}else if(year==='2'){
 				$('#endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format("yyyy-MM-dd"));
 			}else{
-				$('#startDay').val('');
 				$('#endDay').val('');
 			}
 		}
+	});
+	
+	/* modal toggle */
+	$('#site-search-btn').click(function(){
+		$('.modal').fadeIn('fast');
+	});
+	
+	$('#modal-close-btn').click(function(){
+		$('.modal').fadeOut('fast');
 	});
 });
 Date.prototype.format = function(f) {
