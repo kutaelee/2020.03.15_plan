@@ -39,6 +39,10 @@ $(document).ready(function() {
 	$('#modal-close-btn').click(function(){
 		$('.modal').fadeOut('fast');
 	});
+	
+	$('#back-btn').click(function(){
+		history.go(-1);
+	});
 });
 Date.prototype.format = function(f) {
 

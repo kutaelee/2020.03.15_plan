@@ -5,7 +5,9 @@ body {
 .header {
 	background: rgba(0, 0, 0, .9);
 }
-
+.layer{
+	height: 90%;
+}
 .layer form {
 	width: 40%;
 	min-height: 75%;
@@ -73,17 +75,7 @@ body {
 }
 
 #submit-btn {
-	width: 80%;
-	margin-left: 10%;
-	font-size: 20px;
-	margin-top: 2%;
-	padding: 15px;
-	background: black;
-	border: 1px solid black;
-}
-
-#submit-btn:hover {
-	opacity: 1;
+	background: #217093;
 }
 
 #manager {
@@ -178,4 +170,28 @@ body {
 	font-weight: 1000;
 	cursor: pointer;
 	outline: none;
+}
+
+.btn-wrap {
+	width: 100%;
+	text-align: center;
+	margin-top: 2%;
+}
+
+.btn-wrap button {
+	border-radius: 50%;
+		padding: 10px;
+	border: none;
+	opacity: .8;
+}
+
+.btn-wrap img {
+	width: 40px;
+}
+#back-btn{
+	margin-right: 10px;
+	background: black;
+}
+.btn-wrap button:hover{
+	opacity: 1;
 }
