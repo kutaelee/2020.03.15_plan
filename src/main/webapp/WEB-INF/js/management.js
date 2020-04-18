@@ -11,7 +11,7 @@
 	 }
 	 
 	 $('#insert-btn').click(function(){
-		 document.location.href="/page/management/write";
+		 document.location.href="/page/management/writepage";
 	 });
 	 
 	 $('#man-btn').click(function(){
@@ -29,6 +29,7 @@
 		$('#all-check').hide();
 		$('#th-check').hide();
 		$('.td-check').hide();
+		$('.board .t-content').css('cursor','pointer');
 		$('#default-btn-wrap').show();
 	 });
 	 
