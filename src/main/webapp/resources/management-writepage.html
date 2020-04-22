@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link href="/css/management-writepage.css?ver=11" rel="stylesheet"
+<link href="/css/management-writepage.css?ver=12" rel="stylesheet"
 	type="text/css" />
-<script src="/js/management-writepage.js?ver=10" type="text/javascript"></script>
+<script src="/js/management-writepage.js?ver=11" type="text/javascript"></script>
 </head>
 
 <body>
@@ -28,21 +28,25 @@
 	<div class="layer">
 		<form onsubmit="return false">
 			<h2>유지보수 등록</h2>
-			<label>사업명</label> <input type="text"> <label>사이트명</label>
+			<label for="man-name">사업명</label> <input type="text" id="man-name">
+			<label for="site-name">사이트명</label>
 			<button id="site-search-btn">선택</button>
-			<input type="text"> <label>영업대표</label> <input type="text">
-			<label>유지보수 시작일</label>
+			<input type="text" id="site-name"> 
+			<label for="man-sellary">영업대표</label> <input type="text" id="man-sellary">
+			<label for="man-startDay">유지보수 시작일</label>
 			<button class="year-btn" id="year1">1년</button>
 			<button class="year-btn" id="year2">2년</button>
 			<button class="year-select" id="year3">선택안함</button>
-			<input type="date" id="startDay"> <label>유지보수 종료일</label> <input
-				type="date" id="endDay"> <label>유지보수 담당자</label><br /> <select
+			<input type="date" id="man-startDay"> <label>유지보수 종료일</label> <input
+				type="date" id="man-endDay"> <label>유지보수 담당자</label><br /> <select
 				name="manager" id="manager">
 				<option value="">나중에 등록</option>
 				<option value="현상원">현상원</option>
 				<option value="이상인">이상인</option>
 				<option value="이유훈">이유훈</option>
 			</select>
+			<label for="man-description">유지보수 메모</label> <br />
+			<textarea id="man-description" cols="40" rows="8" ></textarea>
 			<div class="btn-wrap">
 				<button id="back-btn">
 					<img src="/img/back.png" alt="뒤로" title="뒤로">

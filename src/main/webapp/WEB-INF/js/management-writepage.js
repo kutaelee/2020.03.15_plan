@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('.header').load("/resources/header.html?ver=3");
+	$('.header').load("/resources/header.html?" + new Date().getTime());
 	/* date */
 	$(document).on('click', '.year-btn', function(e) {
 		$('.year-select').attr('class', 'year-btn');
@@ -7,26 +7,26 @@ $(document).ready(function() {
 
 		var date = new Date();
 		var year = e.target.id[4];
-		var startDay = $('#startDay').val();
+		var startDay = $('#man-startDay').val();
 		if (!startDay) {
 			if(year==='1'){
-				$('#startDay').val(date.format("yyyy-MM-dd"));
-				$('#endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format("yyyy-MM-dd"));
+				$('#man-startDay').val(date.format("yyyy-MM-dd"));
+				$('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format("yyyy-MM-dd"));
 			}else if(year==='2'){
-				$('#startDay').val(date.format("yyyy-MM-dd"));
-				$('#endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format("yyyy-MM-dd"));
+				$('#man-startDay').val(date.format("yyyy-MM-dd"));
+				$('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format("yyyy-MM-dd"));
 			}else{
-				$('#endDay').val('');
+				$('#man-endDay').val('');
 			}
 		}else{
-			var currentDay=$('#startDay').val().split('-');
+			var currentDay=$('#man-startDay').val().split('-');
 			date=new Date(currentDay[0],Number(currentDay[1])-1,currentDay[2]);
 			if(year==='1'){
-				$('#endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format("yyyy-MM-dd"));
+				$('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format("yyyy-MM-dd"));
 			}else if(year==='2'){
-				$('#endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format("yyyy-MM-dd"));
+				$('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format("yyyy-MM-dd"));
 			}else{
-				$('#endDay').val('');
+				$('#man-endDay').val('');
 			}
 		}
 	});

@@ -1,0 +1,89 @@
+body {
+	background: whitesmoke;
+}
+
+.btn-wrap {
+	width: 80%;
+	margin-left: 10%;
+	text-align: right;
+	margin-top: 5%;
+}
+
+.search-wrap {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 2%;
+	text-align: center;
+	position: sticky;
+    top: 100px;
+    z-index: 1000;
+    opacity: .8;
+}
+
+.search-wrap label {
+	font-size: 18px;
+}
+
+#search-keyword {
+	width: 30%;
+	height: 30px;
+	font-size: 18px;
+	letter-spacing: 1px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	text-align: center;
+}
+
+.site-wrap, .map-wrap {
+	background: white;
+	width: 80%;
+	margin-left: 10%;
+	min-height: 50%;
+	box-shadow: 1px 2px 5px black;
+	border-radius: 10px;
+	padding: 2%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.map-wrap {
+	width: 70%;
+	margin-left: 15%;
+}
+
+.siteBx {
+	width: 120px;
+	display: inline-flex;
+	height: 10%;
+	text-align: center;
+	color: white;
+	border-radius: 10px;
+	margin: 1%;
+	padding: 4% 2%;
+	cursor: pointer;
+	opacity: .8;
+}
+
+.siteBx:hover {
+	opacity: 1;
+}
+
+.siteBx:nth-child(odd) {
+	background: slateblue;
+}
+
+.siteBx:nth-child(even) {
+	background: turquoise;
+}
+
+.back-wrap {
+	width: 80%;
+	margin-left: 10%;
+	text-align: right;
+}
+#site-map{
+	width: 80%;
+    height: 50%;
+    margin-left: 10%;
+}

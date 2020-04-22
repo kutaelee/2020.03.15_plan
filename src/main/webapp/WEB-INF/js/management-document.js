@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('.header').load("/resources/header.html?ver=3");
+	$('.header').load("/resources/header.html?" + new Date().getTime());
 
 	var mapContainer = document.getElementById('site-map'), // 지도를 표시할 div
 	mapOption = {

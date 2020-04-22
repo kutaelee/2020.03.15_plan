@@ -1,3 +1,3 @@
  $(document).ready(() => {
-	 $('.header').load("/resources/header.html?ver=1");
+	 $('.header').load("/resources/header.html?" + new Date().getTime());
  });

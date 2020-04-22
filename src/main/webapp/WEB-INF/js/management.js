@@ -1,6 +1,6 @@
  $(document).ready(() => {
-	 $('.header').load("/resources/header.html?ver=1");
-
+	 $('.header').load("/resources/header.html?" + new Date().getTime());
+	 var modifyMode=false;
 	 var width=$(document).width()-$(document).width()/10;
 	 if(width>600){
 		 $('.board').width(width+'px');
@@ -22,6 +22,7 @@
 		$('.td-check').show();
 		$('.board .t-content').css('cursor','unset');
 		$('.board .t-content').attr('stat','disabled');
+		modifyMode=true;
 	 });
 	 
 	 $('#cansel-btn').click(function(){
@@ -31,6 +32,7 @@
 		$('.td-check').hide();
 		$('.board .t-content').css('cursor','pointer');
 		$('#default-btn-wrap').show();
+		modifyMode=false;
 	 });
 	 
 	 $(document).on('click','#all-check',function(){
@@ -41,13 +43,16 @@
 		 }
 	 });
 	 $(document).on('click','.t-content',function(){
-		 console.log($(this).attr('class'));
-			var chk=document.getElementById($(this).children('.td-check').children().attr('id'));
-			if(chk.checked){
-				chk.checked=false;
-			}else{
-				chk.checked=true;
-			}
+		 	if(modifyMode){
+		 		var chk=document.getElementById($(this).children('.td-check').children().attr('id'));
+				if(chk.checked){
+					chk.checked=false;
+				}else{
+					chk.checked=true;
+				}
+		 	}else{
+		 		 document.location.href="/page/management/document";
+		 	}
 	 });
 	 
 	 $(document).on('click','.checkBx',function(){

@@ -5,7 +5,7 @@
         let margin=20;
     	
         $(document).ready(() => {
-        	$('.header').load("/resources/header.html?ver=8");
+        	$('.header').load("/resources/header.html?" + new Date().getTime());
             if(currentMonth!=1){       
             	margin-=60*(currentMonth-1);
                 $('.content-wrap').css('margin-left', margin + 'vw');

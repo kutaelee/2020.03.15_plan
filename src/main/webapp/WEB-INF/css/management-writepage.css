@@ -195,3 +195,9 @@ body {
 .btn-wrap button:hover{
 	opacity: 1;
 }
+#man-description{
+	width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    resize: none;
+}
