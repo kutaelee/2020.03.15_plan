@@ -14,9 +14,9 @@
 		 document.location.href="/page/management/writepage";
 	 });
 	 
-	 $('#man-btn').click(function(){
+	 $('#modify-btn').click(function(){
 		$('#default-btn-wrap').hide();
-		$('#man-btn-wrap').show(); 
+		$('#modify-btn-wrap').show(); 
 		$('#all-check').show();
 		$('#th-check').show();
 		$('.td-check').show();
@@ -26,7 +26,7 @@
 	 });
 	 
 	 $('#cansel-btn').click(function(){
-		$('#man-btn-wrap').hide(); 
+		$('#modify-btn-wrap').hide(); 
 		$('#all-check').hide();
 		$('#th-check').hide();
 		$('.td-check').hide();

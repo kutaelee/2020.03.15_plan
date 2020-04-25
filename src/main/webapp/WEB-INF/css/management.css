@@ -48,11 +48,10 @@ body {
 	padding: 1%;
 	color: white;
 	letter-spacing: 1px;
-	font-weight: 1000;
-	font-size: 15px;
 	cursor: pointer;
 	opacity: .9;
 	background: black;
+	outline: none;
 }
 
 .btn-wrap button img {
@@ -71,11 +70,11 @@ body {
 	background: red;
 }
 
-#man-btn {
+#modify-btn {
 	background: #faab17;
 }
 
-#modify-btn {
+#confirm-btn {
 	background: #FF9800;
 }
 
@@ -160,7 +159,7 @@ body {
 	margin-right: 5px;
 }
 
-#man-btn-wrap {
+#modify-btn-wrap {
 	display: none;
 }
 
