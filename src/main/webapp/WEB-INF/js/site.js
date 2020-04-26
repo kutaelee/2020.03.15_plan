@@ -21,6 +21,10 @@ $(document).ready(() => {
 	$('#insert-btn').click(function () {
 		location.href="/page/site/write";
 	});
+	
+	$('#modify-btn').click(function () {
+		location.href="/page/site/modify";
+	});
 
 	$('#sitemap-btn').click('click', function () {
 		siteMap();
