@@ -1,7 +1,9 @@
-body{
+body {
 	background: whitesmoke;
 }
+
 #layer1 {
+	overflow-x: hidden;
 	height: 100vh;
 }
 
@@ -96,4 +98,20 @@ body{
 	transform: rotateX(90deg);
 	position: fixed;
 	width: 100%;
+}
+
+@media ( max-width :700px) {
+	.content-section {
+		width: 90vw;
+		margin-right: 5vw;
+		height: 90%;
+	}
+	.slide-btn-wrap {
+		position: fixed;
+		opacity: .8;
+	}
+	#slide-left-btn {
+		margin-left: 8%;
+		margin-top: 50%;
+	}
 }
