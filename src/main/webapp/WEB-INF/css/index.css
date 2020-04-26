@@ -30,12 +30,31 @@ body {
 	animation: animate 5s linear infinite;
 }
 
-@keyframes animate { 0% , 100% {
+@
+keyframes animate { 0% , 100% {
 	filter: hue-rotate(0deg);
 }
 
 50%{
-filter:hue-rotate(360deg);
+filter
+
+
+
+
+
+
+
+
+:hue-rotate(360deg)
+
+
+
+
+
+
+
+
+;
 }
 }
 #progressbar:before {
@@ -255,11 +274,11 @@ filter:hue-rotate(360deg);
 
 .container .imgBx img {
 	position: absolute;
-	top: -170; left : -100px;
+	top: -170;
+	left: -100px;
 	filter: grayscale(1);
 	max-width: 100%;
 	transition: .5s;
-	left: -100px;
 }
 
 .container .imgBx:hover img:nth-child(3) {
@@ -333,4 +352,61 @@ filter:hue-rotate(360deg);
 
 #scrollSpy a:hover {
 	color: white;
+}
+
+@media ( max-width :700px) {
+	#wrap {
+		margin-right: 0px;
+		padding-right: 0px;
+	}
+	.container {
+		max-width: 100%;
+	}
+	#skew-layer {
+		width: 75%;
+		margin-left: 5%;
+	}
+	.container .skew {
+		transform: skewX(20deg);
+	}
+	.container h2 {
+		font-size: 2em
+	}
+	.container .imgBx {
+		width: 100%;
+		height: 0;
+		margin-left: 40%;
+	}
+	.container .skew a {
+		transform: skewX(10deg);
+	}
+	.container .skew p {
+		font-size: .9em;
+	}
+	.swiper-container {
+		width: 300px;
+		height: 300px;
+	}
+	.content-box {
+		width: 80%;
+		margin-left: 10%;
+	}
+	#cube-layer {
+		margin-top: 45%;
+		height: 70%;
+	}
+	#scrollSpy {
+		width: 100%;
+		margin-left: 0;
+		border-radius: 0;
+		margin-top: 0;
+	}
+	#scrollSpy a {
+		margin: 2%;
+		display: inline-block;
+	}
+	#wrap {
+		height: 91vh;
+		overflow-x: hidden;
+	}
 }
