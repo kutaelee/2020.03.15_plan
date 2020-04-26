@@ -11,7 +11,7 @@
 	 }
 	 
 	 $('#insert-btn').click(function(){
-		 document.location.href="/page/management/writepage";
+		 document.location.href="/page/management/write";
 	 });
 	 
 	 $('#modify-btn').click(function(){

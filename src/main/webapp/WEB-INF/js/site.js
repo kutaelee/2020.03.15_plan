@@ -18,7 +18,8 @@ $(document).ready(() => {
 	$(document).on('click', '.site-wrap span', function () {
 	});
 
-	$('#back-btn').click(function () {
+	$('#insert-btn').click(function () {
+		location.href="/page/site/write";
 	});
 
 	$('#sitemap-btn').click('click', function () {
