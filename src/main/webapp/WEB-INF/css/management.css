@@ -171,3 +171,9 @@ body {
 	height: 13px;
 	width: 13px;
 }
+
+@media ( max-width :700px) {
+	.board {
+		margin-left: 1%;
+	}
+}

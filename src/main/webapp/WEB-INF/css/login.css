@@ -233,3 +233,14 @@ form .inputGroup2 #showPasswordToggle input:disabled ~ .indicator:after
 	{
 	visibility: hidden;
 }
+
+@media ( max-width :700px) {
+	.layer {
+		width: 90%;
+		margin-left: 5%;
+	}
+	form {
+		padding: 3em;
+		top: 0;
+	}
+}

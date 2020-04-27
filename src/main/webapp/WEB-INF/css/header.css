@@ -65,10 +65,14 @@ p, a, input {
 	float: right;
 }
 
+#logo {
+	display: none;
+}
+
 @media ( max-width :700px) {
 	.header {
 		background: black;
-		z-index:100;
+		z-index: 100;
 	}
 	.nav {
 		display: none;
@@ -123,7 +127,19 @@ p, a, input {
 		transform: rotate(45deg) translate(-9px, -11px);
 		transition: 2s;
 	}
-	#login{
-	margin-top:10%;
+	#login {
+		margin-top: 10%;
+	}
+	#logo {
+		color: white;
+		position: absolute;
+		margin: 7% 5%;
+		font-size: 20px;
+		display: block;
+		font-weight: 1000;
+		text-decoration: none;
+		cursor: pointer;
+		outline: none;
+		letter-spacing: 1px;
 	}
 }

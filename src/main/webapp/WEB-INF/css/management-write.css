@@ -5,9 +5,11 @@ body {
 .header {
 	background: rgba(0, 0, 0, .9);
 }
-.layer{
+
+.layer {
 	height: 90%;
 }
+
 .layer form {
 	width: 40%;
 	min-height: 75%;
@@ -180,7 +182,7 @@ body {
 
 .btn-wrap button {
 	border-radius: 50%;
-		padding: 10px;
+	padding: 10px;
 	border: none;
 	opacity: .8;
 }
@@ -188,16 +190,39 @@ body {
 .btn-wrap img {
 	width: 40px;
 }
-#back-btn{
+
+#back-btn {
 	margin-right: 10px;
 	background: black;
 }
-.btn-wrap button:hover{
+
+.btn-wrap button:hover {
 	opacity: 1;
 }
-#man-description{
+
+#man-description {
 	width: 80%;
-    margin-left: 10%;
-    margin-top: 2%;
-    resize: none;
+	margin-left: 10%;
+	margin-top: 2%;
+	resize: none;
+}
+
+@media ( max-width :700px) {
+	.layer form {
+		width: 90%;
+		margin-left: 5%;
+	}
+	#site-modal {
+		margin-left: 10%;
+		min-height: 40%;
+		margin-top: 25%;
+		width: 80%;
+	}
+
+	#site-search input {
+		width: 50%;
+	}
+	#site-search button {
+		margin-left: 3px;
+	}
 }

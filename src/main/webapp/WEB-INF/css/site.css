@@ -1,6 +1,7 @@
 body {
 	background: whitesmoke;
 }
+
 .btn-wrap {
 	width: 100%;
 	text-align: right;
@@ -159,9 +160,9 @@ body {
 	overflow: hidden;
 	height: 500px;
 	position: relative;
-	width:80%;
-	margin-left:10%;
-	z-index:1;
+	width: 80%;
+	margin-left: 10%;
+	z-index: 1;
 }
 
 #btnRoadview, #btnMap {
@@ -197,4 +198,26 @@ body {
 
 #container.view_roadview #btnRoadview {
 	display: none;
+}
+
+@media ( max-width :700px) {
+	.site-wrap {
+		width: 90%;
+		height: 50%;
+		margin: 5% 3%;
+		position: relative;
+	}
+	.site-list {
+		width: 120%;
+	}
+	.map-wrap{
+	width: 92%;
+    margin-left: 2%;
+	}
+	#container{
+	    height: 25%;
+	}
+	#btnMap{
+	top: 30px;
+	}
 }

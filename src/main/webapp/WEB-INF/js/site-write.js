@@ -219,6 +219,9 @@ $(document).ready(function() {
 	// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 	infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	
+	$(window).resize(function() {
+		searchPlaces();
+	});
 	// 키워드로 장소를 검색합니다
 	searchPlaces();
 	
