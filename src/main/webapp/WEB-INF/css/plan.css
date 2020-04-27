@@ -3,13 +3,14 @@ body {
 }
 
 #layer1 {
-	overflow-x: hidden;
-	height: 100vh;
+	overflow: hidden;
+	height: 120vh;
 }
 
 .content-wrap {
 	margin-top: 5%;
 	width: 99999px;
+	height:90vh;
 	transition: .3s;
 }
 
@@ -113,5 +114,8 @@ body {
 	#slide-left-btn {
 		margin-left: 8%;
 		margin-top: 50%;
+	}
+	#layer1{
+		height: 90vh;
 	}
 }
