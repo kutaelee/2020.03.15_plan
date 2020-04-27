@@ -19,6 +19,7 @@ body {
 	width: 10px;
 	height: 100%;
 	background: rgba(255, 255, 255, 0.05);
+	z-index:10;
 }
 
 #progressbar {
@@ -28,6 +29,7 @@ body {
 	width: 10px;
 	background: linear-gradient(to top, #008aff, #00ffe7);
 	animation: animate 5s linear infinite;
+	z-index:10;
 }
 
 @
@@ -210,6 +212,7 @@ filter
 	width: 100%;
 	height: 100vh;
 	background: #010615;
+	padding-top: 10%;
 }
 
 .content-box {
@@ -224,9 +227,9 @@ filter
 
 #cube-layer {
 	width: 100%;
-	height: 100%;
-	margin: 10% 0;
-	padding: 0;
+	height: 150vh;
+    margin: 0;
+    padding: 0;
 }
 
 .swiper-container {
@@ -336,7 +339,7 @@ filter
 	position: absolute;
 	text-align: center;
 	margin-top: 3%;
-	z-index: 10;
+	z-index: 9;
 	background: rgba(0, 0, 0, .8);
 	padding: 1%;
 	border-radius: 10%;
@@ -359,6 +362,9 @@ filter
 		margin-right: 0px;
 		padding-right: 0px;
 	}
+	#member-layer{
+		height: 300vh;
+	}
 	.container {
 		max-width: 100%;
 	}
@@ -370,7 +376,7 @@ filter
 		transform: skewX(20deg);
 	}
 	.container h2 {
-		font-size: 2em
+		font-size: 1.3em
 	}
 	.container .imgBx {
 		width: 100%;
@@ -393,13 +399,13 @@ filter
 	}
 	#cube-layer {
 		margin-top: 45%;
-		height: 70%;
 	}
 	#scrollSpy {
 		width: 100%;
 		margin-left: 0;
 		border-radius: 0;
 		margin-top: 0;
+		font-size: 14px;
 	}
 	#scrollSpy a {
 		margin: 2%;

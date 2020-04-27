@@ -4,53 +4,68 @@ $(document).ready(function() {
 	var progress = document.getElementById('progressbar');
 	var wrap = document.getElementById('wrap');
 	var totalHeight = wrap.scrollHeight - window.innerHeight;
-
+	var width=screen.width;
+	var sectionTop=[];
+	sectionTop.push($('#member-layer').offset().top);
+	sectionTop.push($('#skew-layer').offset().top);
+	sectionTop.push($('#cube-layer').offset().top);
+	sectionTop.push($('#util-layer').offset().top);
 	$('#nav1').css('color','white');
+	
+	if(width<700){
+		totalHeight = wrap.scrollHeight;
+	}
+	
+	$(window).resize(function() {
+		sectionTop[0]=$('#member-layer').offset().top;
+		sectionTop[1]=$('#skew-layer').offset().top;
+		sectionTop[2]=$('#cube-layer').offset().top;
+		sectionTop[3]=$('#util-layer').offset().top;
+		console.log(sectionTop);
+	});
+
 	wrap.onscroll = function() {
 		//scroll bar 
-		var progressHeight = (wrap.scrollTop / totalHeight) * 100 + 3;
+		var progressHeight = (wrap.scrollTop / totalHeight) * 100 + 6;
 		progress.style.height = progressHeight + "%";
-		console.log(progressHeight);
+		console.log(wrap.scrollTop);
+		console.log(sectionTop);
 		// scroll spy css
-		if(progressHeight<18){
+		if(wrap.scrollTop>=sectionTop[0] && wrap.scrollTop<sectionTop[1]){
 			$('#scrollSpy a').css('color','gray');
 			$('#nav1').css('color','white');
-		}else if(progressHeight>18 && progressHeight<75){
+		}else if(wrap.scrollTop>=sectionTop[1] && wrap.scrollTop<sectionTop[2]){
 			$('#scrollSpy a').css('color','gray');
 			$('#nav2').css('color','white');
-		}else if(progressHeight>75 && progressHeight<95){
+		}else if(wrap.scrollTop>=sectionTop[2] && wrap.scrollTop<sectionTop[3]){
 			$('#scrollSpy a').css('color','gray');
 			$('#nav3').css('color','white');
-		}else if(progressHeight>95){
+		}else if(wrap.scrollTop>=sectionTop[3]-100){
 			$('#scrollSpy a').css('color','gray');
 			$('#nav4').css('color','white');
 		}
 	}
 
 	/* scroll spy move */
-	var offset1 = $('#member-layer').offset().top;
-	var offset2 = $('#skew-layer').offset().top;
-	var offset3 = $('#cube-layer').offset().top;
-	var offset4 = $('#util-layer').offset().top;
 	$(document).on('click', '#scrollSpy a', function(e) {
 		var selectNum = e.target.id[3];
 
 		if (selectNum == 1) {
 			$('#wrap').animate({
-				scrollTop : offset1
+				scrollTop : sectionTop[0]+10
 			}, 400);
 		} else if (selectNum == 2) {
 			$('#wrap').animate({
-				scrollTop : offset2
+				scrollTop :sectionTop[1]+10
 			}, 400);
 		} else if (selectNum == 3) {
 			$('#wrap').animate({
-				scrollTop : offset3
+				scrollTop : sectionTop[2]+10
 			}, 400);
 		} else if (selectNum == 4) {
 
 			$('#wrap').animate({
-				scrollTop : offset4
+				scrollTop : sectionTop[3]+10
 			}, 400);
 		}
 
