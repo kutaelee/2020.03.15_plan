@@ -248,20 +248,27 @@ $(document).ready(function() {
 		$('#site-addr').val($(this).children('span').first().text());
 		$('.modal').fadeOut('fast');
 	});
-	var trNum=1;
+	var trNum=0;
+	
+	for(let i=0;i<3;i++){
+		$('.site-man-info').append('<tr id="man-info'+i+'" style="display:none"></tr>');
+		$('#man-info'+i).append('<td> <input type="text" class="site-man"  placeholder="홍길동"> </td>')
+		.append('<td> <input type="text" class="site-phone" placeholder="숫자만 입력"> </td> </tr>');
+	}
+	
 	$('#info-add-btn').click(function(){
 		if(trNum<3){
-			$('.site-man-info').append('<tr id="man-info'+trNum+'"></tr>');
-			$('#man-info'+trNum).append('<td> <input type="text" class="site-man"  placeholder="홍길동"> </td>')
-			.append('<td> <input type="text" class="site-phone" placeholder="숫자만 입력"> </td>')
-			.append('<td> <button class="minus-btn">-</button></td> </tr>');
+			$('.minus-btn').remove();
+			$('#man-info'+trNum).show();
+			$('#man-info'+trNum).append('<td> <button class="minus-btn">-</button></td>');
 			trNum++;
 		}else{
 			alert("담당자 정보는 3명까지 입력 가능합니다.");
 		}
 	});
 	$(document).on('click','.minus-btn',function(){
-		$(this).parent().parent().remove();
+		$(this).parent().parent().hide();
 		trNum--;
+		$('#man-info'+trNum).append('<td> <button class="minus-btn">-</button></td>');
 	});
 });

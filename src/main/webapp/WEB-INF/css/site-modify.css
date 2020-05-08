@@ -202,11 +202,11 @@ body {
 
 
 
-/* 카카오 맵 */
+/* 移댁뭅�삤 留� */
 .map_wrap, .map_wrap * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	font-family: 'Malgun Gothic', dotum, '�룍��', sans-serif;
 	font-size: 12px;
 }
 
@@ -391,8 +391,25 @@ body {
 }
 
 @media ( max-width :700px) {
-	.layer form{
-		width:90%;
+	.layer form {
+		width: 90%;
 		margin-left: 5%;
+	}
+	#site-modal {
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 5%;
+		height: 90%;
+	}
+	#menu_wrap {
+		position: relative;
+		width: 90%;
+		height: 50%;
+		box-shadow: 1px 3px 5px grey;
+		border: 1px solid gray;
+	}
+	.map_wrap #site-map {
+		height: 50%;
+		margin-top: 5%;
 	}
 }
