@@ -1,3 +1,8 @@
+function welcomeFadeOut(){
+	
+	$('#welcome-section').fadeOut('fast');
+	video=$('#welcome-section video')[0].pause();
+}
 $(document).ready(function() {
 
 	$('.header').load("/resources/header.html?" + new Date().getTime());
@@ -8,7 +13,6 @@ $(document).ready(function() {
 	var sectionTop=[];
 	sectionTop.push($('#member-layer').offset().top);
 	sectionTop.push($('#skew-layer').offset().top);
-	sectionTop.push($('#cube-layer').offset().top);
 	sectionTop.push($('#util-layer').offset().top);
 	$('#nav1').css('color','white');
 	
@@ -19,7 +23,6 @@ $(document).ready(function() {
 	$(window).resize(function() {
 		sectionTop[0]=$('#member-layer').offset().top;
 		sectionTop[1]=$('#skew-layer').offset().top;
-		sectionTop[2]=$('#cube-layer').offset().top;
 		sectionTop[3]=$('#util-layer').offset().top;
 		console.log(sectionTop);
 	});
@@ -71,18 +74,8 @@ $(document).ready(function() {
 
 	});
 	
-	/* cube */
-	var swiper = new Swiper('.swiper-container', {
-		effect : 'cube',
-		grabCursor : true,
-		cubeEffect : {
-			shadow : true,
-			slideShadows : true,
-			shadowOffset : 20,
-			shadowScale : 0.94,
-		},
-		pagination : {
-			el : '.swiper-pagination',
-		},
-	});
+    setTimeout(welcomeFadeOut, 10000);
+    $('#welcome-section').click(()=>{
+    	welcomeFadeOut();
+    });
 });

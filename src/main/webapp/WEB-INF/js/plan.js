@@ -1,6 +1,7 @@
         
 		let now=new Date();
 		let contentCnt = 12;
+		let currentYear=now.getFullYear();
         let currentMonth=now.getMonth()+1;
         let margin=20;
         $(document).ready(() => {
@@ -65,6 +66,7 @@
             	$('#section'+(currentMonth+1)+' .content-header').css('text-align','left');
             });
             $('.current-month h1').text(currentMonth+'월');
+            $('.current-year h1').text(currentYear+'년');
             $('.current-month').hide();
         	window.onscroll = function() {
         		var planTop=100;
@@ -79,5 +81,16 @@
         		}
         	
         	}
+        	
+        	
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	$('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+        	
         	
         });

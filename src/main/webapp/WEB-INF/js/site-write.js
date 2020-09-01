@@ -248,7 +248,7 @@ $(document).ready(function() {
 		$('#site-addr').val($(this).children('span').first().text());
 		$('.modal').fadeOut('fast');
 	});
-	var trNum=0;
+	var trNum=-1;
 	
 	for(let i=0;i<3;i++){
 		$('.site-man-info').append('<tr id="man-info'+i+'" style="display:none"></tr>');
@@ -257,12 +257,13 @@ $(document).ready(function() {
 	}
 	
 	$('#info-add-btn').click(function(){
+		trNum++;
 		if(trNum<3){
 			$('.minus-btn').remove();
 			$('#man-info'+trNum).show();
 			$('#man-info'+trNum).append('<td> <button class="minus-btn">-</button></td>');
-			trNum++;
-		}else{
+		}else if(trNum>2){
+			trNum--;
 			alert("담당자 정보는 3명까지 입력 가능합니다.");
 		}
 	});

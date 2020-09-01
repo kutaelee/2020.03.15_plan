@@ -1,180 +1,135 @@
 <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="/css/index.css?ver=45" rel="stylesheet" type="text/css" />
+        <script src="/js/index.js?ver=27" type="text/javascript"></script>
+    </head>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link href="/css/index.css?ver=45" rel="stylesheet" type="text/css" />
-<script src="/js/index.js?ver=27" type="text/javascript"></script>
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/css/swiper.min.css">
-<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-</head>
+    <body class="body">
+        <section id="welcome-section">
+            <div>
+                <h2>기술지원실</h2>
+                <video src="/video/smoke.mp4" muted loop autoplay type="mp4"></video>
+            </div>
+        </section>
+        <div class="header"></div>
+        <div id="progressbar"></div>
+        <div id="scrollPath"></div>
+        <div id="scrollSpy">
+            <a id="nav1">기술지원실</a>
+            <a id="nav2">사이트 소개</a>
+            <a id="nav3">기술지원 랭킹</a>
+            <a id="nav4">편의기능</a>
+        </div>
+        <div id="wrap">
+            <div class="layer" id="member-layer">
+                <div class="box">
+                    <div class="imgBx">
+                        <img src="/img/actor1.jpg" />
+                    </div>
+                    <div class="content">
+                        <h2>
+                            현상원 <br />
+                            <span>수석</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="imgBx">
+                        <img src="/img/actor2.jpg" />
+                    </div>
+                    <div class="content">
+                        <h2>
+                            이상인 <br />
+                            <span>수석</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="imgBx">
+                        <img src="/img/actor3.jpg" />
+                    </div>
+                    <div class="content">
+                        <h2>
+                            이유훈 <br />
+                            <span>선임</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="imgBx">
+                        <img src="/img/actor4.jpg" />
+                    </div>
+                    <div class="content">
+                        <h2>
+                            이규태 <br />
+                            <span>전임</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="imgBx">
+                        <img src="/img/question-mark-1872634_1920.jpg" />
+                    </div>
+                    <div class="content">
+                        <h2>
+                            Who's Next? <br />
+                            <span>null</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
 
-<body class="body">
+            <div class="layer" id="skew-layer">
+                <div class="container">
+                    <div class="imgBx"><img src="/img/img1.jpg" /> <img src="/img/img1.jpg" /> <img src="/img/img1.jpg" /></div>
+                    <h2>CSS 3D Perspective Post</h2>
+                    <div class="skew">
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <a>Read More</a>
+                    </div>
+                </div>
 
-	<div class="header"></div>
-	<div id="progressbar"></div>
-	<div id="scrollPath"></div>
-	<div id="scrollSpy">
-		<a id="nav1">기술지원실</a>
-		<a id="nav2">사이트 소개</a>
-		<a id="nav3">기술지원 랭킹</a>
-		<a id="nav4">편의기능</a>
-	</div>
-	<div id="wrap">
-		<div class="layer" id="member-layer">
-			<div class="box">
-				<div class="imgBx">
-					<img src="/img/actor1.jpg">
-				</div>
-				<div class="content">
-					<h2>
-						현상원 <br> <span>수석</span>
-					</h2>
-				</div>
-			</div>
-			<div class="box">
-				<div class="imgBx">
-					<img src="/img/actor2.jpg">
-				</div>
-				<div class="content">
-					<h2>
-						이상인 <br> <span>수석</span>
-					</h2>
-				</div>
-			</div>
-			<div class="box">
-				<div class="imgBx">
-					<img src="/img/actor3.jpg">
-				</div>
-				<div class="content">
-					<h2>
-						이유훈 <br> <span>선임</span>
-					</h2>
-				</div>
-			</div>
-			<div class="box">
-				<div class="imgBx">
-					<img src="/img/actor4.jpg">
-				</div>
-				<div class="content">
-					<h2>
-						이규태 <br> <span>전임</span>
-					</h2>
-				</div>
-			</div>
-			<div class="box">
-				<div class="imgBx">
-					<img src="/img/question-mark-1872634_1920.jpg">
-				</div>
-				<div class="content">
-					<h2>
-						Who's Next? <br> <span>null</span>
-					</h2>
-				</div>
-			</div>
-		</div>
+                <div class="container">
+                    <div class="imgBx"><img src="/img/img2.jpg" /> <img src="/img/img2.jpg" /> <img src="/img/img2.jpg" /></div>
+                    <h2>CSS 3D Perspective Post</h2>
+                    <div class="skew">
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <a>Read More</a>
+                    </div>
+                </div>
 
-		<div class="layer" id="skew-layer">
-			<div class="container">
-				<div class="imgBx">
-					<img src="/img/img1.jpg"> <img src="/img/img1.jpg"> <img
-						src="/img/img1.jpg">
+                <div class="container">
+                    <div class="imgBx"><img src="/img/img1.jpg" /> <img src="/img/img1.jpg" /> <img src="/img/img1.jpg" /></div>
+                    <h2>CSS 3D Perspective Post</h2>
+                    <div class="skew">
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <a>Read More</a>
+                    </div>
+                </div>
+            </div>
 
-				</div>
-				<h2>CSS 3D Perspective Post</h2>
-				<div class="skew">
-					<p>Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the industry's standard
-						dummy text ever since the 1500s, when an unknown printer took a
-						galley of type and scrambled it to make a type specimen book. It
-						has survived not only five centuries, but also the leap into
-						electronic typesetting, remaining essentially unchanged. It was
-						popularised in the 1960s with the release of Letraset sheets
-						containing Lorem Ipsum passages, and more recently with desktop
-						publishing software like Aldus PageMaker including versions of
-						Lorem Ipsum.</p>
-					<a>Read More</a>
-				</div>
-			</div>
-
-			<div class="container">
-				<div class="imgBx">
-					<img src="/img/img2.jpg"> <img src="/img/img2.jpg"> <img
-						src="/img/img2.jpg">
-
-				</div>
-				<h2>CSS 3D Perspective Post</h2>
-				<div class="skew">
-					<p>Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the industry's standard
-						dummy text ever since the 1500s, when an unknown printer took a
-						galley of type and scrambled it to make a type specimen book. It
-						has survived not only five centuries, but also the leap into
-						electronic typesetting, remaining essentially unchanged. It was
-						popularised in the 1960s with the release of Letraset sheets
-						containing Lorem Ipsum passages, and more recently with desktop
-						publishing software like Aldus PageMaker including versions of
-						Lorem Ipsum.</p>
-					<a>Read More</a>
-				</div>
-			</div>
-
-			<div class="container">
-				<div class="imgBx">
-					<img src="/img/img1.jpg"> <img src="/img/img1.jpg"> <img
-						src="/img/img1.jpg">
-
-				</div>
-				<h2>CSS 3D Perspective Post</h2>
-				<div class="skew">
-					<p>Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the industry's standard
-						dummy text ever since the 1500s, when an unknown printer took a
-						galley of type and scrambled it to make a type specimen book. It
-						has survived not only five centuries, but also the leap into
-						electronic typesetting, remaining essentially unchanged. It was
-						popularised in the 1960s with the release of Letraset sheets
-						containing Lorem Ipsum passages, and more recently with desktop
-						publishing software like Aldus PageMaker including versions of
-						Lorem Ipsum.</p>
-					<a>Read More</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="layer" id="cube-layer">
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<h1>1번</h1>
-					</div>
-					<div class="swiper-slide">
-						<h1>2번</h1>
-					</div>
-					<div class="swiper-slide">
-						<h1>3번</h1>
-					</div>
-					<div class="swiper-slide">
-						<h1>4번</h1>
-					</div>
-					<div class="swiper-slide">
-						<h1>5번</h1>
-					</div>
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination"></div>
-			</div>
-		</div>
-
-
-		<div class="layer" id="util-layer">
-			<div class="content-box" id="tech-lank"></div>
-			<div class="content-box" id="man-lank"></div>
-			<div class="content-box" id="man-list"></div>
-		</div>
-
-	</div>
-</body>
-
+            <div class="layer" id="util-layer">
+                <div class="content-box" id="tech-lank"></div>
+                <div class="content-box" id="man-lank"></div>
+                <div class="content-box" id="man-list"></div>
+            </div>
+        </div>
+    </body>
 </html>
