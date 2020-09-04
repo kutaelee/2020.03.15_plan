@@ -394,8 +394,8 @@ body {
         transform: skewX(0deg);
     }
     #skew-layer {
-        width: 75%;
-        margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
     }
     .container{
         max-width: 95%;

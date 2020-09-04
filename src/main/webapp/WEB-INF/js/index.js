@@ -8,6 +8,7 @@ $(document).ready(function() {
 	var progress = document.getElementById('progressbar');
 	var wrap = document.getElementById('wrap');
 	var totalHeight = wrap.scrollHeight - window.innerHeight;
+	var emptyHeight= 6;
 	var width=screen.width;
 	var sectionTop=[];
 	sectionTop.push($('#member-layer').offset().top);
@@ -16,22 +17,20 @@ $(document).ready(function() {
 	$('#nav1').css('color','white');
 	
 	if(width<700){
-		totalHeight = wrap.scrollHeight;
+		totalHeight=totalHeight/1.5;
 	}
 	
 	$(window).resize(function() {
 		sectionTop[0]=$('#member-layer').offset().top;
 		sectionTop[1]=$('#skew-layer').offset().top;
-		sectionTop[3]=$('#util-layer').offset().top;
-		console.log(sectionTop);
+		sectionTop[2]=$('#util-layer').offset().top;
 	});
 
 	wrap.onscroll = function() {
 		//scroll bar 
 		var progressHeight = (wrap.scrollTop / totalHeight) * 100 + 6;
 		progress.style.height = progressHeight + "%";
-		console.log(wrap.scrollTop);
-		console.log(sectionTop);
+		
 		// scroll spy css
 		if(wrap.scrollTop>=sectionTop[0] && wrap.scrollTop<sectionTop[1]){
 			$('#scrollSpy a').css('color','gray');
@@ -39,12 +38,10 @@ $(document).ready(function() {
 		}else if(wrap.scrollTop>=sectionTop[1] && wrap.scrollTop<sectionTop[2]){
 			$('#scrollSpy a').css('color','gray');
 			$('#nav2').css('color','white');
-		}else if(wrap.scrollTop>=sectionTop[2] && wrap.scrollTop<sectionTop[3]){
+		}else if(wrap.scrollTop>=sectionTop[2]){
+			console.log('a')
 			$('#scrollSpy a').css('color','gray');
 			$('#nav3').css('color','white');
-		}else if(wrap.scrollTop>=sectionTop[3]-100){
-			$('#scrollSpy a').css('color','gray');
-			$('#nav4').css('color','white');
 		}
 	}
 
@@ -62,14 +59,9 @@ $(document).ready(function() {
 			}, 400);
 		} else if (selectNum == 3) {
 			$('#wrap').animate({
-				scrollTop : sectionTop[2]+10
+				scrollTop : sectionTop[2]-100
 			}, 400);
-		} else if (selectNum == 4) {
-
-			$('#wrap').animate({
-				scrollTop : sectionTop[3]+10
-			}, 400);
-		}
+		} 
 
 	});
 	
