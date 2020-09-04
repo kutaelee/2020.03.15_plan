@@ -2,7 +2,8 @@
 	 $('.header').load("/resources/header.html?" + new Date().getTime());
 	 var modifyMode=false;
 	 var width=$(document).width()-$(document).width()/10;
-	 if(width>600){
+	 console.log(width)
+	 if(width>900){
 		 $('.board').width(width+'px');
 		 $('.board').css('margin-left',width/20+'px');
 	 }else{

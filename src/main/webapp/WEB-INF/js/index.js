@@ -1,5 +1,4 @@
 function welcomeFadeOut(){
-	
 	$('#welcome-section').fadeOut('fast');
 	video=$('#welcome-section video')[0].pause();
 }
