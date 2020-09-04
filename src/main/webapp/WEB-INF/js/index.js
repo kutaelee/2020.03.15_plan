@@ -38,7 +38,6 @@ $(document).ready(function () {
             $('#scrollSpy a').css('color', 'gray');
             $('#nav2').css('color', 'white');
         } else if (wrap.scrollTop >= sectionTop[2]) {
-            console.log('a');
             $('#scrollSpy a').css('color', 'gray');
             $('#nav3').css('color', 'white');
         }
