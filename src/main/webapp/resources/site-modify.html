@@ -1,81 +1,78 @@
 <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e76d8d4a48e40ffe64ec66770dcd28cc&libraries=services"></script>
+        <link href="/css/site-modify.css?ver=20" rel="stylesheet" type="text/css" />
+        <script src="/js/site-modify.js?ver=17" type="text/javascript"></script>
+    </head>
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e76d8d4a48e40ffe64ec66770dcd28cc&libraries=services"></script>
-	<link href="/css/site-modify.css?ver=20" rel="stylesheet" type="text/css" />
-	<script src="/js/site-modify.js?ver=17" type="text/javascript"></script>
-</head>
+    <body>
+        <div class="header"></div>
+        <div class="modal">
+            <div id="site-modal">
+                <div id="close-wrap">
+                    <button id="modal-close-btn">X</button>
+                </div>
+                <div class="map_wrap">
+                    <div id="site-map" style="position: relative; overflow: hidden"></div>
 
-<body>
-	<div class="header"></div>
-	<div class="modal">
-		<div id="site-modal">
-			<div id="close-wrap">
-				<button id="modal-close-btn">X</button>
-			</div>
-			<div class="map_wrap">
-				<div id="site-map" style="position: relative; overflow: hidden;"></div>
-
-				<div id="menu_wrap" class="bg_white">
-					<div class="option">
-						<div>
-							<form onclick="return false;">
-								사이트명 : <input type="text" value="메타빌드" id="keyword" size="15">
-								<input type="hidden">
-								<button id="map-search-btn">검색하기</button>
-							</form>
-						</div>
-					</div>
-					<hr>
-					<ul id="placesList"></ul>
-					<div id="pagination"></div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<div class="layer">
-		<form onsubmit="return false">
-			<h2>사이트 등록</h2>
-			<label for="site-name">사이트명</label> <input type="text" id="site-name" value="메타빌드">
-			<label for="site-addr">주소</label>
-			<button id="addr-search-btn">검색</button>
-			<input type="text" id="site-addr" placeholder="주소 검색으로 나오지 않을 때만 직접 입력해주세요" value="서울시 서초구 효령로 208">
-			<table class="site-man-info">
-				<tr>
-					<th>사이트 담당자</th>
-					<th>담당자 연락처</th>
-					<th></th>
-				</tr>
-				<tr id="man-info0">
-					<td> <input type="text" class="site-man" placeholder="홍길동"> </td>
-					<td> <input type="text" class="site-phone" placeholder="숫자만 입력"> </td>
-				</tr>
-			</table>
-			<button id="info-add-btn">+</button>
-			<label for="meta-man">유지보수 담당자 </label> <select name="manager" id="meta-man">
-				<option value="">나중에 등록</option>
-				<option value="현상원">현상원</option>
-				<option value="이상인">이상인</option>
-				<option value="이유훈">이유훈</option>
-				<option value="이규태">이규태</option>
-			</select> <label for="site-description">사이트 메모</label> <br />
-			<textarea id="site-description" cols="40" rows="8"></textarea>
-			<div class="btn-wrap">
-				<button id="back-btn">
-					<img src="/img/back.png" alt="뒤로" title="뒤로">
-				</button>
-				<button id="submit-btn">
-					<img src="/img/submit.png" alt="등록 " title="등록">
-				</button>
-
-			</div>
-		</form>
-	</div>
-</body>
-
+                    <div id="menu_wrap" class="bg_white">
+                        <div class="option">
+                            <div>
+                                <form onclick="return false;">
+                                    사이트명 : <input type="text" value="메타빌드" id="keyword" size="15" />
+                                    <input type="hidden" />
+                                    <button id="map-search-btn">검색하기</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <ul id="placesList"></ul>
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layer">
+            <form onsubmit="return false">
+                <h2>사이트 등록</h2>
+                <label for="site-name">사이트명</label> <input type="text" id="site-name" value="메타빌드" />
+                <label for="site-addr">주소</label>
+                <button id="addr-search-btn">검색</button>
+                <input type="text" id="site-addr" placeholder="주소 검색으로 나오지 않을 때만 직접 입력해주세요" value="서울시 서초구 효령로 208" />
+                <table class="site-man-info">
+                    <tr>
+                        <th>사이트 담당자</th>
+                        <th>담당자 연락처</th>
+                        <th></th>
+                    </tr>
+                    <tr id="man-info0">
+                        <td><input type="text" class="site-man" placeholder="홍길동" /></td>
+                        <td><input type="text" class="site-phone" placeholder="숫자만 입력" /></td>
+                    </tr>
+                </table>
+                <button id="info-add-btn">+</button>
+                <label for="meta-man">유지보수 담당자 </label>
+                <select name="manager" id="meta-man">
+                    <option value="">나중에 등록</option>
+                    <option value="현상원">현상원</option>
+                    <option value="이상인">이상인</option>
+                    <option value="이유훈">이유훈</option>
+                    <option value="이규태">이규태</option>
+                </select>
+                <label for="site-description">사이트 메모</label> <br />
+                <textarea id="site-description" cols="40" rows="8"></textarea>
+                <div class="btn-wrap">
+                    <button id="back-btn">
+                        <img src="/img/back.png" alt="뒤로" title="뒤로" />
+                    </button>
+                    <button id="submit-btn">
+                        <img src="/img/submit.png" alt="등록 " title="등록" />
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

@@ -394,25 +394,26 @@ body {
         transform: skewX(0deg);
     }
     #skew-layer {
-    width: 80%;
-    margin-left: 10%;
+        width: 80%;
+        margin-left: 10%;
     }
-    .container{
+    .container {
         max-width: 95%;
-    transform: skewX(0deg);
-    margin-left: 2.5%;}
+        transform: skewX(0deg);
+        margin-left: 2.5%;
+    }
     .container .skew {
         transform: skewX(0deg);
     }
     .container h2 {
-    margin-top:0;
+        margin-top: 0;
         font-size: 1.3em;
     }
     .container .imgBx {
         width: 100%;
         height: 0;
         margin-left: 35%;
-              transform: skewX(0deg);
+        transform: skewX(0deg);
     }
     .container .skew a {
         transform: skewX(0deg);
@@ -425,8 +426,8 @@ body {
         height: 300px;
     }
     .content-box {
-width: 85%;
-    margin-left: 5%;
+        width: 85%;
+        margin-left: 5%;
     }
     #cube-layer {
         margin-top: 45%;
@@ -446,7 +447,7 @@ width: 85%;
         height: 91vh;
         overflow-x: hidden;
     }
-    #welcome-section h2{
-    	font-size:4em;
+    #welcome-section h2 {
+        font-size: 4em;
     }
 }

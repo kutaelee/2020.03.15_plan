@@ -12,7 +12,7 @@ body {
     width: 99999px;
     height: 90vh;
     transition: 0.3s;
-    z-index:100;
+    z-index: 100;
 }
 
 .content-section {
@@ -76,9 +76,9 @@ body {
     padding: 0 5%;
 }
 
-#siteinfo-modal{
-	display:none;
-	    width: 100%;
+#siteinfo-modal {
+    display: none;
+    width: 100%;
     height: 100%;
     position: fixed;
     background: rgba(0, 0, 0, 0.8);
@@ -103,19 +103,19 @@ body {
     font-weight: 1000;
     position: fixed;
     border: none;
-    background:transparent;
+    background: transparent;
     font-size: 30px;
     outline: none;
     cursor: pointer;
 }
-#plan-stat{
-	display: inline-block;
+#plan-stat {
+    display: inline-block;
 }
-.stat-complate{
-	color:blue;
+.stat-complate {
+    color: blue;
 }
-.stat-yet{
-	color:red;
+.stat-yet {
+    color: red;
 }
 .current-month {
     position: fixed;
@@ -134,9 +134,9 @@ body {
     font-size: 15px;
     letter-spacing: 2px;
 }
-.siteName{
+.siteName {
     font-size: 20px;
-    display:inline-block;
+    display: inline-block;
 }
 .current {
     margin: 0;
@@ -209,48 +209,50 @@ input:checked[type='checkbox']:after {
 }
 
 /* maps */
-#container{
+#container {
     overflow: hidden;
     height: 60%;
     position: absolute;
     width: 80%;
     z-index: 1;
-    margin-bottom:3%;
+    margin-bottom: 3%;
     box-shadow: 1px 1px 5px grey;
 }
-#btnRoadview, #btnMap {
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	padding: 7px 12px;
-	font-size: 14px;
-	border: 1px solid #dbdbdb;
-	background-color: #fff;
-	border-radius: 2px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
-	z-index: 1;
-	cursor: pointer;
+#btnRoadview,
+#btnMap {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 7px 12px;
+    font-size: 14px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    z-index: 1;
+    cursor: pointer;
 }
 
-#btnRoadview:hover, #btnMap:hover {
-	background-color: #fcfcfc;
-	border: 1px solid #c1c1c1;
+#btnRoadview:hover,
+#btnMap:hover {
+    background-color: #fcfcfc;
+    border: 1px solid #c1c1c1;
 }
 
 #container.view_map #mapWrapper {
-	z-index: 10;
+    z-index: 10;
 }
 
 #container.view_map #btnMap {
-	display: none;
+    display: none;
 }
 
 #container.view_roadview #mapWrapper {
-	z-index: 0;
+    z-index: 0;
 }
 
 #container.view_roadview #btnRoadview {
-	display: none;
+    display: none;
 }
 @media (max-width: 700px) {
     .content-section {
@@ -262,39 +264,40 @@ input:checked[type='checkbox']:after {
         position: fixed;
         opacity: 0.8;
     }
-    .slide-btn-wrap button{
-           margin-top: 30%;
-           font-size:35px;
+    .slide-btn-wrap button {
+        margin-top: 30%;
+        font-size: 35px;
     }
     #slide-left-btn {
         margin-left: 5%;
- 
     }
     #slide-right-btn {
         margin-left: 90%;
     }
     #layer1 {
-    overflow-x: hidden;
-    overflow-y: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
         height: 90vh;
     }
-    
-    	.map-wrap{
-	width: 92%;
-    margin-left: 2%;
-	}
-	#container{
-	    height: 50%;
-	}
-	#btnMap{
-	top: 30px;
-	}
-	.siteInfo{
-	width: 80%;
-    margin-left: 5%;}
-    #siteinfo-close-btn{
-    margin-left:72%}
-    #container{
-    width:90%;
+
+    .map-wrap {
+        width: 92%;
+        margin-left: 2%;
+    }
+    #container {
+        height: 50%;
+    }
+    #btnMap {
+        top: 30px;
+    }
+    .siteInfo {
+        width: 80%;
+        margin-left: 5%;
+    }
+    #siteinfo-close-btn {
+        margin-left: 72%;
+    }
+    #container {
+        width: 90%;
     }
 }

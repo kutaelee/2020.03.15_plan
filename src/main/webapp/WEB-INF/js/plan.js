@@ -186,14 +186,13 @@ $(document).ready(() => {
         });
     });
 
-    $('#stat-check').click(function(){
-    	if($("input:checkbox[name=statCheck]").is(":checked") == true) {
-    		  $('#plan-stat').text('점검완료');
-    		  $('#plan-stat').attr('class','stat-complate');
-    	}else{
-    		  $('#plan-stat').text('점검예정');
-    		  $('#plan-stat').attr('class','stat-yet');
-    	}
+    $('#stat-check').click(function () {
+        if ($('input:checkbox[name=statCheck]').is(':checked') == true) {
+            $('#plan-stat').text('점검완료');
+            $('#plan-stat').attr('class', 'stat-complate');
+        } else {
+            $('#plan-stat').text('점검예정');
+            $('#plan-stat').attr('class', 'stat-yet');
+        }
     });
-
 });

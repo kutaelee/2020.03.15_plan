@@ -1,223 +1,230 @@
 body {
-	background: whitesmoke;
+    background: whitesmoke;
 }
 
 .btn-wrap {
-	width: 100%;
-	text-align: right;
-	margin-top: 2%;
+    width: 100%;
+    text-align: right;
+    margin-top: 2%;
 }
 
 .search-wrap {
-	width: 100%;
-	margin-bottom: 10%;
-	text-align: center;
-	z-index: 1000;
-	opacity: .8;
+    width: 100%;
+    margin-bottom: 10%;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0.8;
 }
 
 .search-wrap label {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 #search-keyword {
-	width: 75%;
-	height: 30px;
-	font-size: 18px;
-	letter-spacing: 1px;
-	padding: 5px;
-	border-radius: 5px;
-	border: 1px solid gray;
-	text-align: center;
+    width: 75%;
+    height: 30px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: center;
 }
 
 .site-wrap {
-	position: fixed;
-	width: 20%;
-	margin: 0;
-	opacity: .8;
-	transition: .5s;
-	margin: 0;
-	height: 75%;
-	overflow: hidden;
+    position: fixed;
+    width: 20%;
+    margin: 0;
+    opacity: 0.8;
+    transition: 0.5s;
+    margin: 0;
+    height: 75%;
+    overflow: hidden;
 }
 
-.site-wrap, .map-wrap {
-	background: white;
-	box-shadow: 1px 2px 5px black;
-	border-radius: 10px;
-	padding: 2%;
-	margin-top: 2%;
-	margin-bottom: 2%;
+.site-wrap,
+.map-wrap {
+    background: white;
+    box-shadow: 1px 2px 5px black;
+    border-radius: 10px;
+    padding: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .map-wrap {
-	width: 60%;
-	margin-left: 30%;
-	min-height: 50%;
+    width: 60%;
+    margin-left: 30%;
+    min-height: 50%;
 }
 
 .siteBx {
-	width: 80%;
-	display: block;
-	text-align: center;
-	color: white;
-	border-radius: 10px;
-	padding: 4% 2%;
-	cursor: pointer;
-	opacity: .8;
-	margin-bottom: 5%;
-	margin-left: 5%;
+    width: 80%;
+    display: block;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    padding: 4% 2%;
+    cursor: pointer;
+    opacity: 0.8;
+    margin-bottom: 5%;
+    margin-left: 5%;
 }
 
 .siteBx:hover {
-	opacity: 1;
+    opacity: 1;
 }
 
 .siteBx:nth-child(odd) {
-	background: slateblue;
+    background: slateblue;
 }
 
 .siteBx:nth-child(even) {
-	background: turquoise;
+    background: turquoise;
 }
 
 .back-wrap {
-	width: 80%;
-	margin-left: 10%;
-	text-align: right;
+    width: 80%;
+    margin-left: 10%;
+    text-align: right;
 }
 
-#site-map, #road-map {
-	width: 80%;
-	height: 50%;
-	margin-left: 10%;
+#site-map,
+#road-map {
+    width: 80%;
+    height: 50%;
+    margin-left: 10%;
 }
 
 #road-map {
-	display: none;
+    display: none;
 }
 
 .site-list {
-	overflow-y: scroll;
-	position: relative;
-	height: 90%;
-	width: 130%;
-	margin-left: -7%;
+    overflow-y: scroll;
+    position: relative;
+    height: 90%;
+    width: 130%;
+    margin-left: -7%;
 }
 
 .map-wrap table {
-	text-align: center;
-	border: 1px solid gray;
-	border-collapse: collapse;
-	margin-bottom: 5%;
+    text-align: center;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    margin-bottom: 5%;
 }
 
-.map-wrap table th, .map-wrap table td {
-	border: 1px solid gray;
+.map-wrap table th,
+.map-wrap table td {
+    border: 1px solid gray;
 }
 
-.map-wrap table, .map-wrap h2, .map-wrap p {
-	margin-left: 10%;
-	width: 80%;
+.map-wrap table,
+.map-wrap h2,
+.map-wrap p {
+    margin-left: 10%;
+    width: 80%;
 }
 
 #site-descript {
-	letter-spacing: 1px;
-	line-height: 2;
+    letter-spacing: 1px;
+    line-height: 2;
 }
 
 .btn-wrap button {
-	box-shadow: 0px 2px 5px grey;
-	border: none;
-	border-radius: 50%;
-	padding: 1%;
-	color: white;
-	letter-spacing: 1px;
-	cursor: pointer;
-	opacity: .9;
-	background: black;
-	outline: none;
+    box-shadow: 0px 2px 5px grey;
+    border: none;
+    border-radius: 50%;
+    padding: 1%;
+    color: white;
+    letter-spacing: 1px;
+    cursor: pointer;
+    opacity: 0.9;
+    background: black;
+    outline: none;
 }
 
 .btn-wrap button:hover {
-	opacity: 1;
+    opacity: 1;
 }
 
 .btn-wrap img {
-	width: 40px;
+    width: 40px;
 }
 
 #modify-btn {
-	background: #faab17;
+    background: #faab17;
 }
 
 #insert-btn {
-	background: #217093;
+    background: #217093;
 }
 
 #container {
-	overflow: hidden;
-	height: 500px;
-	position: relative;
-	width: 80%;
-	margin-left: 10%;
-	z-index: 1;
+    overflow: hidden;
+    height: 500px;
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    z-index: 1;
 }
 
-#btnRoadview, #btnMap {
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	padding: 7px 12px;
-	font-size: 14px;
-	border: 1px solid #dbdbdb;
-	background-color: #fff;
-	border-radius: 2px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
-	z-index: 1;
-	cursor: pointer;
+#btnRoadview,
+#btnMap {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 7px 12px;
+    font-size: 14px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    z-index: 1;
+    cursor: pointer;
 }
 
-#btnRoadview:hover, #btnMap:hover {
-	background-color: #fcfcfc;
-	border: 1px solid #c1c1c1;
+#btnRoadview:hover,
+#btnMap:hover {
+    background-color: #fcfcfc;
+    border: 1px solid #c1c1c1;
 }
 
 #container.view_map #mapWrapper {
-	z-index: 10;
+    z-index: 10;
 }
 
 #container.view_map #btnMap {
-	display: none;
+    display: none;
 }
 
 #container.view_roadview #mapWrapper {
-	z-index: 0;
+    z-index: 0;
 }
 
 #container.view_roadview #btnRoadview {
-	display: none;
+    display: none;
 }
 
-@media ( max-width :700px) {
-	.site-wrap {
-		width: 90%;
-		height: 50%;
-		margin: 5% 3%;
-		position: relative;
-	}
-	.site-list {
-		width: 120%;
-	}
-	.map-wrap{
-	width: 92%;
-    margin-left: 2%;
-	}
-	#container{
-	    height: 25%;
-	}
-	#btnMap{
-	top: 30px;
-	}
+@media (max-width: 700px) {
+    .site-wrap {
+        width: 90%;
+        height: 50%;
+        margin: 5% 3%;
+        position: relative;
+    }
+    .site-list {
+        width: 120%;
+    }
+    .map-wrap {
+        width: 92%;
+        margin-left: 2%;
+    }
+    #container {
+        height: 25%;
+    }
+    #btnMap {
+        top: 30px;
+    }
 }
