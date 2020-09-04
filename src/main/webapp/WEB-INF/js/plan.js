@@ -89,13 +89,13 @@ $(document).ready(() => {
         }
 
         if ($(window).scrollTop() > planTop) {
-            $('.current-month').fadeIn();
+            $('.current-month').stop().fadeIn('fast');
         } else {
-            $('.current-month').fadeOut();
+            $('.current-month').stop().fadeOut('fast');
         }
     };
 
-    $('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
+    $('.yet').append('<span class="yet-site" id="site-20"><a href="#">근로복지공단</a></span>');
     $('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
     $('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
     $('.yet').append('<span class="yet-site"><a href="#">근로복지공단</a></span>');
@@ -189,8 +189,14 @@ $(document).ready(() => {
     $('#stat-check').click(function () {
         if ($('input:checkbox[name=statCheck]').is(':checked') == true) {
             $('#plan-stat').text('점검완료');
+            var temp=$('#site-20').detach();
+            $('span').remove('#site-20');
+            $('.complete').append(temp);
             $('#plan-stat').attr('class', 'stat-complate');
         } else {
+        	   var temp= $('#site-20').detach();
+        	   $('span').remove('#site-20');
+               $('.yet').append(temp);
             $('#plan-stat').text('점검예정');
             $('#plan-stat').attr('class', 'stat-yet');
         }

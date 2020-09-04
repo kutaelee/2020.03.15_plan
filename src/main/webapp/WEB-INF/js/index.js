@@ -12,7 +12,7 @@ $(document).ready(function () {
     var sectionTop = [];
     sectionTop.push($('#member-layer').offset().top);
     sectionTop.push($('#skew-layer').offset().top);
-    sectionTop.push($('#util-layer').offset().top);
+    sectionTop.push($('#util-layer').offset().top-100);
     $('#nav1').css('color', 'white');
 
     if (width < 700) {
@@ -65,7 +65,7 @@ $(document).ready(function () {
         } else if (selectNum == 3) {
             $('#wrap').animate(
                 {
-                    scrollTop: sectionTop[2] - 100,
+                    scrollTop: sectionTop[2] + 10,
                 },
                 400
             );
