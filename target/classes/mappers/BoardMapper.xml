@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<select id="boardList" parameterType="hashMap" resultType="hashMap">
+	<if test="keyword !=null">
+		SELECT DOCUMENT_SEQ,TITLE,REG_DATE FROM DOCUMENT WHERE MENU_SEQ=2 AND DEL_YN='N' AND TITLE LIKE CONCAT('%',#{keyword},'%') order by YEAR DESC limit #{startNum},10;
+	</if>
+	<if test="keyword == null">
+		SELECT DOCUMENT_SEQ,TITLE,REG_DATE FROM DOCUMENT WHERE MENU_SEQ=2 AND DEL_YN='N' AND <![CDATA[(DOCUMENT_SEQ > #{startNum} AND DOCUMENT_SEQ < #{endNum})]]>;
+	</if>
+	</select>
+	<select id="getBoardCount" parameterType="hashMap" resultType="int">
+	<if test="keyword !=null">
+		SELECT COUNT(*) FROM DOCUMENT WHERE MENU_SEQ=(SELECT MENU_SEQ FROM MENU WHERE LINK=#{link}) AND TITLE LIKE CONCAT('%',#{keyword},'%');
+	</if>
+	<if test="keyword == null">
+		SELECT COUNT(*) FROM DOCUMENT WHERE MENU_SEQ=(SELECT MENU_SEQ FROM MENU WHERE LINK=#{link});
+	</if>
+	</select>
+</mapper>
+  
