@@ -1,22 +1,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <link href="/css/join.css?ver=13" rel="stylesheet" type="text/css" />
-        <script src="/js/join.js?ver=3" type="text/javascript"></script>
     </head>
 
     <body>
         <div class="header"></div>
         <div class="layer" id="layer1">
             <div class="join-box">
-                <form id="join-form">
-                    <img src="/img/logo.PNG" /> <input type="text" placeholder="Name" id="join-name" /> <input type="email" placeholder="Email" id="join-email" />
-                    <input type="text" placeholder="ID" id="join-id" /> <input type="password" placeholder="Password" id="join-pw" />
-                    <input type="password" placeholder="Password Check" id="join-pw-check" /> <br />
-                    <button>join</button>
+                <form id="join-form" onsubmit="return false">
+                    <img src="/img/logo.PNG" />
+                    <input type="text" placeholder="Name" id="join-name" />
+                    <input type="email" placeholder="Email" id="join-email" />
+                    <input type="text" placeholder="ID" id="join-id" />
+                    <input type="password" placeholder="Password" id="join-pw" />
+                    <input type="password" placeholder="Password Check" id="join-pw2" /> <br />
+                    <button id="join-btn">join</button>
                 </form>
             </div>
         </div>
     </body>
+    <!-- rsa 라이브러리 -->
+    <script src="/js/rsa/jsbn.js"></script>
+    <script src="/js/rsa/rsa.js"></script>
+    <script src="/js/rsa/prng4.js"></script>
+    <script src="/js/rsa/rng.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="/css/join.css" rel="stylesheet" type="text/css" />
+    <script src="/js/join.js" type="text/javascript"></script>
 </html>
