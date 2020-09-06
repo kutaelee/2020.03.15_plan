@@ -1,4 +1,4 @@
-package com.plan.www.member;
+package com.plan.member;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;

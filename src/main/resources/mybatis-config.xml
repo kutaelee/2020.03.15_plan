@@ -10,7 +10,6 @@
 
 <configuration>
 <typeAliases>
-<!--  <typeAlias alias="Membervo" type="com.mail.member.Membervo"/>-->
-
+ <typeAlias alias="Membervo" type="com.plan.member.MemberVO"/>
 </typeAliases>
 </configuration>

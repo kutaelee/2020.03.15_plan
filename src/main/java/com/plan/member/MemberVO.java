@@ -1,4 +1,4 @@
-package com.plan.www.member;
+package com.plan.member;
 
 import org.springframework.stereotype.Component;
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<select id="showmember" resultType="hashMap">
+		SELECT * FROM USER;
+	</select>
+	<select id="idcheck" parameterType="string"
+		resultType="Membervo">
+		SELECT * FROM USER WHERE USER_ID=#{id}
+	</select>
+	<select id="emailcheck" parameterType="string"
+		resultType="Membervo">
+		SELECT * FROM USER WHERE USER_EMAIL=#{email}
+	</select>
+	<insert id="join">
+		INSERT INTO USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_PRIVATEKEY)
+		VALUES(#{id},#{password},#{user_name},#{email},#{privatekey})
+	</insert>
+
+	<select id="memberselect" parameterType="string"
+		resultType="Membervo">
+		SELECT USER_ID,USER_PRIVATEKEY,USER_EMAIL,USER_AUTH FROM USER WHERE ID=#{id}
+	</select>
+	<select id="login" resultType="Membervo">
+		SELECT * FROM USER WHERE USER_ID=#{id} AND USER_PW=#{password}
+	</select>
+	<update id="authupdate" parameterType="string">
+		UPDATE USER SET USER_PRIVATEKEY=NULL,USER_AUTH='Y' WHERE USER_ID=#{id}
+	</update>
+	<select id="findid" parameterType="string" resultType="string">
+		SELECT USER_ID FROM USER WHERE USER_EMAIL=#{email}
+	</select>
+	<select id="findpw" parameterType="Membervo" resultType="string">
+		SELECT ID FROM USER WHERE USER_ID=#{id} AND USER_EMAIL=#{email}
+	</select>
+	<update id="privatekeychange">
+		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE USER_ID=#{id}
+	</update>
+	<select id="membercheck" resultType="string">
+		SELECT ID FROM USER WHERE USER_ID=#{id} AND USER_PRIVATEKEY=#{privatekey}
+	</select>
+	<update id="pwupdate">
+		UPDATE USER SET USER_PASSWORD=#{password},USER_PRIVATEKEY=NULL WHERE
+		USER_ID=#{id}
+	</update>
+	<update id="emailupdate">
+		UPDATE USER SET USER_EMAIL=#{email} WHERE USER_ID=#{id}
+	</update>
+	<update id="tokenupdate">
+		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE USER_ID=#{id}
+	</update>
+	<select id="MemberCheckSeq" parameterType="int"
+		resultType="hashMap">
+		SELECT USER_SEQ,USER_ID,USER_EMAIL,USER_NAME FROM USER WHERE SEQ=#{seq}
+	</select>
+	<select id="seqSelectPw" parameterType="int" resultType="string">
+		SELECT USER_PASSWORD FROM USER WHERE USER_SEQ=#{seq}
+	</select>
+	<select id="seqSelectId" parameterType="int" resultType="string">
+		SELECT USER_ID FROM USER WHERE USER_SEQ=#{seq}
+	</select>
+	<delete id="memberSecession" parameterType="int">
+		DELETE FROM USER WHERE USER_SEQ=#{seq}
+	</delete>
+	<update id="privatekeySetNull" parameterType="string">
+		UPDATE USER SET USER_PRIVATEKEY=NULL WHERE USER_ID=#{id}
+	</update>
+</mapper>

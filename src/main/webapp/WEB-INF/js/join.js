@@ -8,8 +8,15 @@ var idcheck = false;
 var emailcheck = false;
 var pwcheck = false;
 var pw2check = false;
+
+
+
 $(document).ready(() => {
     $('.header').load('/resources/header.html?' + new Date().getTime());
+    
+    var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
+    var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+    var csrfToken = $("meta[name='_csrf']").attr("content");
 
     // 공개키 요청
     $.ajax({
@@ -24,8 +31,7 @@ $(document).ready(() => {
             swal('라이브러리 로드 에러', '암호화 에러 발생!', 'error');
             console.log(e)
         },
-    });
-
+    });   
     /* 유효성 검사 */
     $('#join-form input').keyup(function () {
         var value = $(this).val();
@@ -34,7 +40,7 @@ $(document).ready(() => {
         //공백제거
         value = value.replace(/ /gi, '');
         $(this).val(value);
-        if (name != 'join-email') {
+        if (name == 'join-name' || name == 'join-id') {
             //특수문자 제거
             if (re.test(value)) {
                 $(this).val(value.replace(re, ''));
@@ -50,11 +56,11 @@ $(document).ready(() => {
                 $('#join-pw').focus();
             }
             $.ajax({
-                url: 'idcheck',
+                url: '/idcheck',
                 type: 'post',
                 data: {
                     id: id,
-                },
+                },  
                 success: function (result) {
                     if (result) {
                         swal('사용가능', '사용해도 좋은 아이디 입니다', 'success');
@@ -63,7 +69,9 @@ $(document).ready(() => {
                         swal('사용불가', '이미 존재하는 아이디 입니다', 'warning');
                         idcheck = false;
                     }
-                },
+                },error:function(e){
+                	console.log(e)
+                }
             });
         } else {
             swal('사용불가', '아이디는 15자리 이하로 입력해주세요', 'warning');
@@ -75,11 +83,11 @@ $(document).ready(() => {
         var email = $(this).val();
         if (exptext.test(email)) {
             $.ajax({
-                url: 'emailcheck',
+                url: '/emailcheck',
                 type: 'post',
                 data: {
                     email: email,
-                },
+                }, 
                 success: function (result) {
                     if (result) {
                         swal('사용가능', '사용해도 좋은 이메일 입니다', 'success');
@@ -88,7 +96,9 @@ $(document).ready(() => {
                         swal('사용불가', '이미 존재하는 이메일 입니다', 'error');
                         emailcheck = false;
                     }
-                },
+                },error:function(e){
+                	console.log(e)
+                }
             });
         } else {
             swal('사용불가', '이메일 형식에 맞춰주세요 인증에 사용됩니다', 'warning');
@@ -128,12 +138,11 @@ $(document).ready(() => {
     });
     // 회원가입 버튼클릭
     $('#join-btn').click(function () {
-        $('.modal').fadeIn('fast');
         if (idcheck && pwcheck && pw2check && emailcheck) {
             var id = $('#join-id').val();
             var email = $('#join-email').val();
             var pw = $('#join-pw').val();
-
+            var name = $('#join-name').val();
             // RSA 암호키 생성
             var rsa = new RSAKey();
             rsa.setPublic(RSAModulus, RSAExponent);
@@ -142,21 +151,24 @@ $(document).ready(() => {
             var securedid = rsa.encrypt(id);
             var securedemail = rsa.encrypt(email);
             var securedpw = rsa.encrypt(pw);
-
+            var securedname = rsa.encrypt(name);
             // 회원가입
             $.ajax({
                 type: 'post',
-                url: 'memberjoin',
+                url: '/memberjoin',
                 data: {
                     id: securedid,
                     pw: securedpw,
                     email: securedemail,
+                    name: securedname
                 },
                 success: function (result) {
                     $('.modal').fadeOut('fast');
                     if (result) {
                         swal('인증메일 전송', '가입 인증메일이 발송되었습니다!', 'success');
-                        location.href = '/sendmail';
+                        setTimeout(function(){
+                        	location.href = '/sendmail';
+                        }, 2000);
                     } else {
                         swal('가입 실패', '입력값에 문제가 있습니다', 'error');
                     }

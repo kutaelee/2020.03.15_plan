@@ -1,4 +1,4 @@
-package com.plan.www.member;
+package com.plan.member;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
@@ -27,7 +27,7 @@ public class MemberController {
 	MemberService ms;
 
 	// 로그인 세션체크
-	@PostMapping(value = "sessioncheck")
+	@PostMapping(value = "/sessioncheck")
 	public @ResponseBody boolean sessionCheck(HttpSession session) {
 		if (!ObjectUtils.isEmpty(session.getAttribute("userseq"))) {
 			return true;
@@ -37,14 +37,14 @@ public class MemberController {
 	}
 
 	// 로그아웃
-	@PostMapping(value = "logout")
+	@PostMapping(value = "/logout")
 	public @ResponseBody boolean logout(HttpSession session) {
 		session.invalidate();
 		return true;
 	}
 
 	// 메일 전송완료페이지
-	@GetMapping(value = "sendmail")
+	@GetMapping(value = "/sendmail")
 	public String sendMail(HttpServletRequest req, HttpSession session) {
 
 		if (!ObjectUtils.isEmpty(session.getAttribute("sendmail"))) {
@@ -56,7 +56,7 @@ public class MemberController {
 	}
 
 	// 이메일 인증
-	@GetMapping(value = "auth")
+	@GetMapping(value = "/auth")
 	public String auth(HttpServletRequest req, HttpSession session) {
 		String id = req.getParameter("id");
 		String token = req.getParameter("token");
@@ -70,7 +70,7 @@ public class MemberController {
 
 	}
 
-	@PostMapping(value = "authreq", produces = "aplication/text; charset=utf8")
+	@PostMapping(value = "/authreq", produces = "aplication/text; charset=utf8")
 	public @ResponseBody String authUpdate(HttpServletRequest req, HttpSession session) {
 		String id = (String) session.getAttribute("authid");
 		String token = (String) session.getAttribute("authtoken");
@@ -95,7 +95,7 @@ public class MemberController {
 	}
 
 	// ID찾기
-	@PostMapping(value = "findid", produces = "application/text; charset=utf8")
+	@PostMapping(value = "/findid", produces = "application/text; charset=utf8")
 	public @ResponseBody String findId(HttpServletRequest req, HttpSession session) {
 		String email = req.getParameter("email");
 		PrivateKey privateKey = (PrivateKey) session.getAttribute("privateKey");
@@ -110,7 +110,7 @@ public class MemberController {
 	}
 
 	// 비밀번호 찾기
-	@PostMapping(value = "findpw", produces = "application/text; charset=utf8")
+	@PostMapping(value = "/findpw", produces = "application/text; charset=utf8")
 	public @ResponseBody String findPw(HttpServletRequest req, HttpSession session)
 			throws AddressException, MessagingException {
 		String id = req.getParameter("id");
@@ -129,7 +129,7 @@ public class MemberController {
 	}
 
 	// 로그인
-	@PostMapping(value = "memberlogin", produces = "application/json; charset=utf8")
+	@PostMapping(value = "/memberlogin", produces = "application/json; charset=utf8")
 	public @ResponseBody String memberLogin(HttpServletRequest req, HttpSession session) {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
@@ -157,24 +157,25 @@ public class MemberController {
 	}
 
 	// 회원가입
-	@PostMapping(value = "memberjoin")
+	@PostMapping(value = "/memberjoin")
 	public @ResponseBody boolean memberJoin(HttpServletRequest req)
 			throws NoSuchAlgorithmException, InvalidKeySpecException, AddressException, MessagingException {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		String email = req.getParameter("email");
-
+		String name=req.getParameter("name");
 		HttpSession session = req.getSession();
 		PrivateKey privateKey = (PrivateKey) session.getAttribute("privateKey");
 		id = ms.decryptRsa(privateKey, id);
 		pw = ms.decryptRsa(privateKey, pw);
 		email = ms.decryptRsa(privateKey, email);
-
+		name =ms.decryptRsa(privateKey, name);
 		// 공백제거
 		id.replace("\\s", "");
 		pw.replace("\\s", "");
 		email.replace("\\s", "");
-
+		name.replace("\\s", "");
+		
 		// 아이디 비밀번호 규격검사
 		if (id.length() > 3 && id.length() < 13 && pw.length() > 3 && pw.length() < 13) {
 			// 아이디 비밀번호 특수문자 검사
@@ -197,31 +198,31 @@ public class MemberController {
 	}
 
 	// 아이디 중복검사
-	@PostMapping(value = "idcheck")
+	@PostMapping(value = "/idcheck")
 	public @ResponseBody boolean idCheck(HttpServletRequest req) {
 		return ms.idCheck(req.getParameter("id"));
 	}
 
 	// 이메일 중복검사
-	@PostMapping(value = "emailcheck")
+	@PostMapping(value = "/emailcheck")
 	public @ResponseBody boolean emailCheck(HttpServletRequest req) {
 		return ms.emailCheck(req.getParameter("email"));
 	}
 
 	// 회원가입페이지
-	@GetMapping(value = "joinpage")
+	@GetMapping(value = "/joinpage")
 	public String joinPage() {
 		return "join";
 	}
 
 	// 로그인페이지
-	@GetMapping(value = "loginpage")
+	@GetMapping(value = "/loginpage")
 	public String loginPage() {
 		return "login";
 	}
 
 	// 개인정보찾기 폼
-	@GetMapping(value = "memberfindpage")
+	@GetMapping(value = "/memberfindpage")
 	public String memberFindPage(HttpSession session) {
 		if (ObjectUtils.isEmpty(session.getAttribute("userseq"))) {
 			return "memberfind";
@@ -232,7 +233,7 @@ public class MemberController {
 	}
 
 	// 비밀번호 변경 폼
-	@GetMapping(value = "changepassword")
+	@GetMapping(value = "/changepassword")
 	public String changePassWordForm(HttpServletRequest req, HttpSession session) {
 		String id = req.getParameter("id");
 		String token = req.getParameter("token");
@@ -254,7 +255,7 @@ public class MemberController {
 	}
 
 	// 비밀번호 변경
-	@PostMapping(value = "memberpwupdate")
+	@PostMapping(value = "/memberpwupdate")
 	public @ResponseBody boolean memberPwUpdate(HttpServletRequest req) {
 		String pw = req.getParameter("pw");
 
@@ -276,7 +277,7 @@ public class MemberController {
 		}
 	}
 
-	@PostMapping(value = "memberCheck")
+	@PostMapping(value = "/memberCheck")
 	public @ResponseBody boolean memberCheck(HttpServletRequest req, HttpSession session) {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
@@ -299,7 +300,7 @@ public class MemberController {
 
 	}
 
-	@PostMapping(value = "emailupdatesend")
+	@PostMapping(value = "/emailupdatesend")
 	public @ResponseBody boolean emailUpdateSend(HttpServletRequest req, HttpSession session)
 			throws AddressException, MessagingException {
 		String email = req.getParameter("email");
@@ -326,7 +327,7 @@ public class MemberController {
 		}
 	}
 
-	@GetMapping(value = "emailupdateform")
+	@GetMapping(value = "/emailupdateform")
 	public String emailUpdateForm(HttpServletRequest req, HttpSession session) {
 		String id = req.getParameter("id");
 		String token = req.getParameter("token");
@@ -341,7 +342,7 @@ public class MemberController {
 		}
 	}
 
-	@PostMapping(value = "emailupdate", produces = "aplication/text;charset=utf-8")
+	@PostMapping(value = "/emailupdate", produces = "aplication/text;charset=utf-8")
 	public @ResponseBody String emailUpdate(HttpServletRequest req, HttpSession session) {
 		String id = (String) session.getAttribute("emailupdateid");
 		String token = (String) session.getAttribute("emailupdatetoken");
@@ -360,7 +361,7 @@ public class MemberController {
 	}
 
 	// 가입인증메일 재전송
-	@PostMapping(value = "emailresend")
+	@PostMapping(value = "/emailresend")
 	public @ResponseBody boolean emailResend(HttpServletRequest req, HttpSession session)
 			throws AddressException, MessagingException {
 		String id = req.getParameter("id");
@@ -378,12 +379,12 @@ public class MemberController {
 		}
 	}
 
-	@GetMapping(value = "mypage")
+	@GetMapping(value = "/mypage")
 	public String myPage(HttpSession session) {
 		return "mypage";
 	}
 
-	@PostMapping(value = "passwordcheck")
+	@PostMapping(value = "/passwordcheck")
 	public @ResponseBody boolean passwordCheck(HttpServletRequest req, HttpSession session) {
 		int seq = (Integer) session.getAttribute("userseq");
 		String pw = req.getParameter("pw");
@@ -398,7 +399,7 @@ public class MemberController {
 		}
 	}
 
-	@PostMapping(value = "memberSecession")
+	@PostMapping(value = "/memberSecession")
 	public @ResponseBody boolean memberSecession(HttpServletRequest req, HttpSession session) {
 		int seq = (Integer) session.getAttribute("userseq");
 		ms.memberSecession(seq);
@@ -407,7 +408,7 @@ public class MemberController {
 	}
 
 	/*
-	 * @PostMapping(value = "googlelogin") public @ResponseBody boolean
+	 * @PostMapping(value = "/googlelogin") public @ResponseBody boolean
 	 * googleLogin(HttpServletRequest req, HttpSession session) { String email =
 	 * req.getParameter("email"); PrivateKey privateKey = (PrivateKey)
 	 * session.getAttribute("privateKey"); email = ms.decryptRsa(privateKey, email);

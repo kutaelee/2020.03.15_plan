@@ -1,4 +1,4 @@
-package com.plan.www.member;
+package com.plan.member;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,9 +23,6 @@ public class MemberDAO {
 	}
 	public void memberInsert(MemberVO mv) {
 		sqlsession.insert("member.join",mv);
-	}
-	public void socialJoin(MemberVO mv) {
-		sqlsession.insert("member.socialJoin",mv);
 	}
 	public MemberVO memberLogin(String id){
 		return sqlsession.selectOne("member.idcheck",id);	
@@ -72,8 +69,4 @@ public class MemberDAO {
 	public void privatekeySetNull(String id) {
 		sqlsession.update("member.privatekeySetNull",id);
 	}
-	public Integer socailCheck(MemberVO mv) {
-		return sqlsession.selectOne("member.socailCheck",mv);
-	}
-	
 }
