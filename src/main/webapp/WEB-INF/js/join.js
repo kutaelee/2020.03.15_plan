@@ -14,10 +14,6 @@ var pw2check = false;
 $(document).ready(() => {
     $('.header').load('/resources/header.html?' + new Date().getTime());
     
-    var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
-    var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-    var csrfToken = $("meta[name='_csrf']").attr("content");
-
     // 공개키 요청
     $.ajax({
         url: '/rsacall',
@@ -56,7 +52,7 @@ $(document).ready(() => {
                 $('#join-pw').focus();
             }
             $.ajax({
-                url: '/idcheck',
+                url: 'idcheck',
                 type: 'post',
                 data: {
                     id: id,
@@ -84,7 +80,7 @@ $(document).ready(() => {
         if (exptext.test(email)) {
             $.ajax({
                 url: '/emailcheck',
-                type: 'post',
+                type: 'POST',
                 data: {
                     email: email,
                 }, 

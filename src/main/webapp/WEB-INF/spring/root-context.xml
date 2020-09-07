@@ -67,7 +67,7 @@
 	<!-- Security -->
 	<bean id="bcryptPasswordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-	<!--  mail -->
+	<!-- mail -->
 	<util:properties id="mail"
 		location="classpath:mail.properties" />
 	<tx:annotation-driven />

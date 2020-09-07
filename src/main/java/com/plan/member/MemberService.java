@@ -77,6 +77,7 @@ public class MemberService {
 
 	// 이메일 중복체크
 	public boolean emailCheck(String email) {
+		System.out.println("check");
 		// 이미 있는 이메일이라면 false
 		if (!ObjectUtils.isEmpty(md.emailCheck(email))) {
 			return false;
