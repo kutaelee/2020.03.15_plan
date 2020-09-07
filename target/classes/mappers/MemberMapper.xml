@@ -7,15 +7,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-	<select id="showmember" resultType="hashMap">
+	<select id="showmember" resultType="hashmap">
 		SELECT * FROM USER;
 	</select>
 	<select id="idcheck" parameterType="string"
-		resultType="Membervo">
+		resultType="MemberVO">
 		SELECT * FROM USER WHERE USER_ID=#{id}
 	</select>
 	<select id="emailcheck" parameterType="string"
-		resultType="Membervo">
+		resultType="MemberVO">
 		SELECT * FROM USER WHERE USER_EMAIL=#{email}
 	</select>
 	<insert id="join">

@@ -13,7 +13,7 @@ public class MemberDAO {
 	private SqlSession sqlsession;
 	
 	public List<HashMap<String,Object>> showmember(MemberVO mv){
-		System.out.println(sqlsession.selectOne("member.emailcheck","a").toString());
+		System.out.println(sqlsession.selectMap("member.emailcheck","a").toString());
 		return sqlsession.selectList("member.showmember",mv);
 	}
 	public MemberVO idCheck(String id) {

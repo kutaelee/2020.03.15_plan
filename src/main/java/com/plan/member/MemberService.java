@@ -49,12 +49,12 @@ public class MemberService {
 
 	// 로그인
 	public MemberVO memberLogin(MemberVO mv) {
-		String userpw = mv.getPassword();
-		String id = mv.getId();
+		String userpw = mv.getUSER_PASSWORD();
+		String id = mv.getUSER_ID();
 
 		if (!ObjectUtils.isEmpty(md.memberLogin(id))) {
 			mv = md.memberLogin(id);
-			if (passwordEncoder.matches(userpw, mv.getPassword())) {
+			if (passwordEncoder.matches(userpw, mv.getUSER_PASSWORD())) {
 				return mv;
 			} else {
 				return null;
@@ -88,10 +88,10 @@ public class MemberService {
 
 	// 회원등록
 	public void memberInsert(MemberVO mv) throws AddressException, MessagingException {
-		String id = mv.getId();
+		String id = mv.getUSER_ID();
 		// 비밀번호 암호화
-		mv.setPassword(passwordEncoder.encode(mv.getPassword()));
-		mv.setPrivatekey(hash());
+		mv.setUSER_PASSWORD(passwordEncoder.encode(mv.getUSER_PASSWORD()));
+		mv.setUSER_PRIVATEKEY(hash());
 		md.memberInsert(mv);
 		mv = md.memberSelect(id);
 		authMailSend(mv);
@@ -104,9 +104,9 @@ public class MemberService {
 			mv = md.memberSelect(pramsid);
 
 			// 가입인증 전인지 확인
-			if (mv.getAuth().equals("N")) {
+			if (mv.getUSER_AUTH().equals("N")) {
 				// 토큰값이 같으면 가입인증 진행
-				if (mv.getPrivatekey().equals(pramstoken)) {
+				if (mv.getUSER_PRIVATEKEY().equals(pramstoken)) {
 					md.authUpdate(pramsid);
 					return true;
 				} else {
@@ -114,7 +114,7 @@ public class MemberService {
 				}
 			} else {
 				// 인증이 이미 되었다면 이메일 인증 진행
-				String token = mv.getPrivatekey();
+				String token = mv.getUSER_PRIVATEKEY();
 				if (!StringUtils.isEmpty(token)) {
 					if (token.equals(pramstoken)) {
 						md.privatekeySetNull(pramsid);
@@ -133,9 +133,9 @@ public class MemberService {
 
 	// 인증메일 전송
 	public void authMailSend(MemberVO mv) throws AddressException, MessagingException {
-		String id = mv.getId();
-		String token = mv.getPrivatekey();
-		String email = mv.getEmail();
+		String id = mv.getUSER_ID();
+		String token = mv.getUSER_PRIVATEKEY();
+		String email = mv.getUSER_EMAIL();
 		String subject = "가입인증메일";
 		String body = "메타빌드 기술지원실 서비스에서 가입인증메일을 보내드립니다. 본인이 가입신청 하신게 맞다면 http://localhost:18080/auth?token=" + token + "&id="
 				+ id + " 주소를 클릭해주세요!";
@@ -227,13 +227,13 @@ public class MemberService {
 	}
 
 	public boolean findPw(MemberVO mv) throws AddressException, MessagingException {
-		String email = mv.getEmail();
+		String email = mv.getUSER_EMAIL();
 		String id = md.findPw(mv);
 		if (!StringUtils.isEmpty(id)) {
-			if (md.memberSelect(id).getAuth().equals("Y")) {
+			if (md.memberSelect(id).getUSER_AUTH().equals("Y")) {
 				String token = hash();
-				mv.setPrivatekey(token);
-				mv.setId(id);
+				mv.setUSER_PRIVATEKEY(token);
+				mv.setUSER_ID(id);
 				md.privateKeyChange(mv);
 
 				String subject = "비밀번호 변경 메일";
@@ -258,16 +258,16 @@ public class MemberService {
 
 	// 비밀번호 변경
 	public void memberPwUpdate(String id, String pw) {
-		mv.setId(id);
-		mv.setPassword(passwordEncoder.encode(pw));
+		mv.setUSER_ID(id);
+		mv.setUSER_PASSWORD(passwordEncoder.encode(pw));
 		md.memberPwUpdate(mv);
 	}
 
 	// 이메일 변경 메일전송
 	public void emailUpdateSend(String id, String email) throws AddressException, MessagingException {
 		String token = hash();
-		mv.setPrivatekey(token);
-		mv.setId(id);
+		mv.setUSER_PRIVATEKEY(token);
+		mv.setUSER_ID(id);
 		md.privateKeyChange(mv);
 
 		String subject = "이메일 변경 인증 메일";
@@ -279,17 +279,17 @@ public class MemberService {
 
 	// 이메일 변경
 	public void emailUpdate(String id, String email) {
-		mv.setId(id);
-		mv.setEmail(email);
+		mv.setUSER_ID(id);
+		mv.setUSER_EMAIL(email);
 		md.emailUpdate(mv);
 	}
 
 	// 이메일 재전송
 	public boolean emailResend(String id) throws AddressException, MessagingException {
 		mv = md.memberSelect(id);
-		if (mv.getAuth().equals("N")) {
-			mv.setPrivatekey(hash());
-			mv.setId(id);
+		if (mv.getUSER_AUTH().equals("N")) {
+			mv.setUSER_PRIVATEKEY(hash());
+			mv.setUSER_ID(id);
 			md.tokenUpdate(mv);
 			authMailSend(mv);
 			return true;

@@ -123,8 +123,8 @@ public class MemberController {
 		PrivateKey privateKey = (PrivateKey) session.getAttribute("privateKey");
 		id = ms.decryptRsa(privateKey, id);
 		email = ms.decryptRsa(privateKey, email);
-		mv.setId(id);
-		mv.setEmail(email);
+		mv.setUSER_ID(id);
+		mv.setUSER_EMAIL(email);
 
 		if (ms.findPw(mv)) {
 			return "이메일로 비밀번호를 변경할 주소를 보내드렸습니다!";
@@ -143,13 +143,13 @@ public class MemberController {
 		id = ms.decryptRsa(privateKey, id);
 		pw = ms.decryptRsa(privateKey, pw);
 
-		mv.setId(id);
-		mv.setPassword(pw);
+		mv.setUSER_ID(id);
+		mv.setUSER_PASSWORD(pw);
 
 		if (null != ms.memberLogin(mv)) {
 			mv = ms.memberLogin(mv);
-			if (mv.getAuth().equals("Y")) {
-				session.setAttribute("userseq", mv.getSeq());
+			if (mv.getUSER_AUTH().equals("Y")) {
+				session.setAttribute("userseq", mv.getUSER_SEQ());
 
 				return "{\"msg\": \"로그인 성공!\"}";
 			} else {
@@ -187,9 +187,9 @@ public class MemberController {
 			if (Pattern.matches("^[a-zA-Z0-9]*$", id) && Pattern.matches("^[a-zA-Z0-9]*$", pw)) {
 				// 아이디,이메일 중복검사
 				if (ms.idCheck(id) && ms.emailCheck(email)) {
-					mv.setId(id);
-					mv.setEmail(email);
-					mv.setPassword(pw);
+					mv.setUSER_ID(id);
+					mv.setUSER_EMAIL(email);
+					mv.setUSER_PASSWORD(pw);
 
 					ms.memberInsert(mv);
 
@@ -248,8 +248,8 @@ public class MemberController {
 		if (StringUtils.isEmpty(id) || StringUtils.isEmpty(token)) {
 			return "home";
 		} else {
-			mv.setId(id);
-			mv.setPrivatekey(token);
+			mv.setUSER_ID(id);
+			mv.setUSER_PRIVATEKEY(token);
 			id = ms.memberCheck(mv);
 			if (null != id) {
 				session.setAttribute("changepwtarget", id);
@@ -297,8 +297,8 @@ public class MemberController {
 		if (StringUtils.isEmpty(id) || StringUtils.isEmpty(pw)) {
 			return false;
 		}
-		mv.setId(id);
-		mv.setPassword(pw);
+		mv.setUSER_ID(id);
+		mv.setUSER_PASSWORD(pw);
 
 		if (null != ms.memberLogin(mv)) {
 			return true;
