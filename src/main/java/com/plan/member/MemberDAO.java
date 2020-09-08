@@ -13,7 +13,6 @@ public class MemberDAO {
 	private SqlSession sqlsession;
 	
 	public List<HashMap<String,Object>> showmember(MemberVO mv){
-		System.out.println(sqlsession.selectMap("member.emailcheck","a").toString());
 		return sqlsession.selectList("member.showmember",mv);
 	}
 	public MemberVO idCheck(String id) {
@@ -23,7 +22,7 @@ public class MemberDAO {
 		return sqlsession.selectOne("member.emailcheck",email);
 	}
 	public void memberInsert(MemberVO mv) {
-		sqlsession.insert("member.join",mv);
+		 sqlsession.insert("member.join",mv);
 	}
 	public MemberVO memberLogin(String id){
 		return sqlsession.selectOne("member.idcheck",id);	
@@ -69,5 +68,8 @@ public class MemberDAO {
 	}
 	public void privatekeySetNull(String id) {
 		sqlsession.update("member.privatekeySetNull",id);
+	}
+	public String getPrivateKey(int seq) {
+		return sqlsession.selectOne("member.getPrivateKey",seq);
 	}
 }

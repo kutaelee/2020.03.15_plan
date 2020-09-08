@@ -21,7 +21,6 @@ public class MailService {
 	//메일전송 함수
 	public void transMail(String body,String email,String subject) throws AddressException, MessagingException {
 		Properties props = System.getProperties();
-
 		props.put("mail.smtp.host", mail.getHost()); 
 		props.put("mail.smtp.port", mail.getPort()); 
 		props.put("mail.smtp.auth", "true"); 

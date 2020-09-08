@@ -15,8 +15,10 @@ public class GlobalExceptionHandler extends RuntimeException {
 	// 모든 예외 처리
 	@ExceptionHandler(Exception.class)
 	public void handlerException(HttpServletRequest req, HttpServletResponse response, Exception e) throws Exception {
+		e.printStackTrace();
 		StringWriter error = new StringWriter();
 		e.printStackTrace(new PrintWriter(error));
+		
 		req.getSession().setAttribute("error", "서버에서 에러가 발생했습니다!");
 		if (e.getClass().getName().equals("org.springframework.web.servlet.NoHandlerFoundException"));
 		{

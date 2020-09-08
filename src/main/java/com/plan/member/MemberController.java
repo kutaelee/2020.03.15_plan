@@ -29,7 +29,9 @@ public class MemberController {
 	MemberVO mv;
 	@Autowired
 	MemberService ms;
-
+	@Autowired
+	MemberDAO md;
+	
 	// 로그인 세션체크
 	@PostMapping(value = "sessioncheck")
 	public @ResponseBody boolean sessionCheck(HttpSession session) {
@@ -95,7 +97,7 @@ public class MemberController {
 	@PostMapping(value = "rsacall")
 	public @ResponseBody Map<String, String> joinPage(HttpServletRequest req, HttpSession session)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
-		System.out.println(ms.showmember());
+		session.setAttribute("privateKey",md.getPrivateKey(1));
 		return ms.Rsacall(req, session);
 	}
 
@@ -145,7 +147,7 @@ public class MemberController {
 
 		mv.setUSER_ID(id);
 		mv.setUSER_PASSWORD(pw);
-
+		
 		if (null != ms.memberLogin(mv)) {
 			mv = ms.memberLogin(mv);
 			if (mv.getUSER_AUTH().equals("Y")) {
@@ -180,7 +182,6 @@ public class MemberController {
 		pw.replace("\\s", "");
 		email.replace("\\s", "");
 		name.replace("\\s", "");
-		
 		// 아이디 비밀번호 규격검사
 		if (id.length() > 3 && id.length() < 13 && pw.length() > 3 && pw.length() < 13) {
 			// 아이디 비밀번호 특수문자 검사
@@ -190,7 +191,7 @@ public class MemberController {
 					mv.setUSER_ID(id);
 					mv.setUSER_EMAIL(email);
 					mv.setUSER_PASSWORD(pw);
-
+					mv.setUSER_NAME(name);
 					ms.memberInsert(mv);
 
 					session.setAttribute("sendmail", true);
@@ -212,8 +213,6 @@ public class MemberController {
 	@PostMapping(value = "emailcheck")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody boolean emailCheck(HttpServletRequest req) {
-		System.out.println("a");
-		System.out.println(ms.emailCheck(req.getParameter("email")));
 		return ms.emailCheck(req.getParameter("email"));
 	}
 
@@ -276,7 +275,6 @@ public class MemberController {
 			if (StringUtils.isEmpty(id)) {
 				return false;
 			}
-			System.out.println(pw);
 			ms.memberPwUpdate(id, pw);
 			session.removeAttribute("changepwtarget");
 			return true;

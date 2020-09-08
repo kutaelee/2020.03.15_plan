@@ -81,3 +81,16 @@ body {
     background: #ff726b;
     cursor: pointer;
 }
+
+.container-alert{
+	display:none;
+	z-index:1000;
+}
+#colors{
+	position: absolute;
+    width: 100%;
+    z-index: 100;
+    margin-top: -2%;
+}
+@media(max-width:700px){
+}

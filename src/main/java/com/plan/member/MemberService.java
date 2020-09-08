@@ -51,7 +51,6 @@ public class MemberService {
 	public MemberVO memberLogin(MemberVO mv) {
 		String userpw = mv.getUSER_PASSWORD();
 		String id = mv.getUSER_ID();
-
 		if (!ObjectUtils.isEmpty(md.memberLogin(id))) {
 			mv = md.memberLogin(id);
 			if (passwordEncoder.matches(userpw, mv.getUSER_PASSWORD())) {
@@ -77,7 +76,6 @@ public class MemberService {
 
 	// 이메일 중복체크
 	public boolean emailCheck(String email) {
-		System.out.println("check");
 		// 이미 있는 이메일이라면 false
 		if (!ObjectUtils.isEmpty(md.emailCheck(email))) {
 			return false;
@@ -133,6 +131,7 @@ public class MemberService {
 
 	// 인증메일 전송
 	public void authMailSend(MemberVO mv) throws AddressException, MessagingException {
+		mv.toString();
 		String id = mv.getUSER_ID();
 		String token = mv.getUSER_PRIVATEKEY();
 		String email = mv.getUSER_EMAIL();

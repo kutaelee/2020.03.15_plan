@@ -9,7 +9,7 @@
 
 
 <configuration>
-<typeAliases>
- <typeAlias alias="Membervo" type="com.plan.member.MemberVO"/>
-</typeAliases>
+	<typeAliases>
+		<typeAlias alias="MemberVO" type="com.plan.member.MemberVO" />
+	</typeAliases>
 </configuration>

@@ -13,7 +13,7 @@ $(document).ready(function () {
     /* 가입 인증 메일일 경우 이메일파라미터값이 없음*/
     if (!getParameterByName('email')) {
         $.ajax({
-            url: 'authreq',
+            url: '/authreq',
             type: 'post',
             success: function (result) {
                 $('.modal').fadeOut('fast');
@@ -26,7 +26,7 @@ $(document).ready(function () {
     } else {
         /* 이메일 인증 메일일 경우 이메일파라미터값 있음*/
         $.ajax({
-            url: 'emailupdate',
+            url: '/emailupdate',
             type: 'post',
             success: function (result) {
                 $('.modal').fadeOut('fast');

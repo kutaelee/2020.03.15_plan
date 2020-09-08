@@ -20,14 +20,14 @@
 	</select>
 	<insert id="join">
 		INSERT INTO USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_PRIVATEKEY)
-		VALUES(#{id},#{password},#{user_name},#{email},#{privatekey})
+		VALUES(#{USER_ID},#{USER_PASSWORD},#{USER_NAME},#{USER_EMAIL},#{USER_PRIVATEKEY})
 	</insert>
 
 	<select id="memberselect" parameterType="string"
-		resultType="Membervo">
-		SELECT USER_ID,USER_PRIVATEKEY,USER_EMAIL,USER_AUTH FROM USER WHERE ID=#{id}
+		resultType="MemberVO">
+		SELECT * FROM USER WHERE USER_ID=#{id}
 	</select>
-	<select id="login" resultType="Membervo">
+	<select id="login" resultType="MemberVO">
 		SELECT * FROM USER WHERE USER_ID=#{id} AND USER_PW=#{password}
 	</select>
 	<update id="authupdate" parameterType="string">
@@ -36,8 +36,8 @@
 	<select id="findid" parameterType="string" resultType="string">
 		SELECT USER_ID FROM USER WHERE USER_EMAIL=#{email}
 	</select>
-	<select id="findpw" parameterType="Membervo" resultType="string">
-		SELECT ID FROM USER WHERE USER_ID=#{id} AND USER_EMAIL=#{email}
+	<select id="findpw" parameterType="MemberVO" resultType="string">
+		SELECT ID FROM USER WHERE USER_ID=#{USER_ID} AND USER_EMAIL=#{USER_EMAIL}
 	</select>
 	<update id="privatekeychange">
 		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE USER_ID=#{id}
@@ -56,7 +56,7 @@
 		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE USER_ID=#{id}
 	</update>
 	<select id="MemberCheckSeq" parameterType="int"
-		resultType="hashMap">
+		resultType="hashmap">
 		SELECT USER_SEQ,USER_ID,USER_EMAIL,USER_NAME FROM USER WHERE SEQ=#{seq}
 	</select>
 	<select id="seqSelectPw" parameterType="int" resultType="string">
@@ -71,4 +71,7 @@
 	<update id="privatekeySetNull" parameterType="string">
 		UPDATE USER SET USER_PRIVATEKEY=NULL WHERE USER_ID=#{id}
 	</update>
+	<select id="getPrivateKey" resultType="string" parameterType="int">
+		SELECT PRIVATE_KEY FROM USER_KEY WHERE KEY_SEQ=#{seq}
+	</select>
 </mapper>
