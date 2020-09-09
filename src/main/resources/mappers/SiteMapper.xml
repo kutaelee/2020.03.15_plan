@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site">
+
+	<insert id="siteInsert" parameterType="hashmap">
+		INSERT INTO SITE(SITE_NAME,SITE_ADDRESS,SITE_MANAGER,SITE_EMAIL,SITE_META_USER_SEQ,SITE_DESCRIPT) 
+		VALUES(#{name},#{addr},#{siteInfo},#{email},#{manSeq},#{desc})
+	</insert>
+	<select id="getSiteList" parameterType="hashmap">
+		SELECT * FROM SITE ORDER BY SITE_SEQ DESC LIMIT #{idx},#{count};
+	</select>
+</mapper>
+  

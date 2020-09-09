@@ -74,4 +74,10 @@
 	<select id="getPrivateKey" resultType="string" parameterType="int">
 		SELECT PRIVATE_KEY FROM USER_KEY WHERE KEY_SEQ=#{seq}
 	</select>
+	<select id="getUserGrade" resultType="int" parameterType="string">
+		SELECT USER_GRADE FROM USER WHERE USER_SEQ=#{seq}
+	</select>
+	<select id="getUserSeqByName" resultType="string" parameterType="string">
+		SELECT USER_SEQ FROM USER WHERE USER_NAME=#{name}
+	</select>
 </mapper>

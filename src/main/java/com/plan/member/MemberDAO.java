@@ -72,4 +72,11 @@ public class MemberDAO {
 	public String getPrivateKey(int seq) {
 		return sqlsession.selectOne("member.getPrivateKey",seq);
 	}
+	public int getUserGrade(String seq) {
+		return sqlsession.selectOne("member.getUserGrade",seq);
+	}
+	public String getUserSeqByName(String name) {
+		return sqlsession.selectOne("member.getUserSeqByName",name);
+		
+	}
 }

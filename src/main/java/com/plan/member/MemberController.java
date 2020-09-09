@@ -31,17 +31,22 @@ public class MemberController {
 	MemberService ms;
 	@Autowired
 	MemberDAO md;
-	
+
 	// 로그인 세션체크
 	@PostMapping(value = "sessioncheck")
 	public @ResponseBody boolean sessionCheck(HttpSession session) {
 		if (!ObjectUtils.isEmpty(session.getAttribute("userseq"))) {
+			if (ObjectUtils.isEmpty(session.getAttribute("userGrade"))) {
+				session.setAttribute("userGrade", getUserGrade(session.getAttribute("userseq").toString()));
+			}
 			return true;
 		} else {
 			return false;
 		}
 	}
-
+	public  int getUserGrade(String seq) {
+		return md.getUserGrade(seq);
+	}
 	// 로그아웃
 	@PostMapping(value = "logout")
 	public @ResponseBody boolean logout(HttpSession session) {
@@ -97,7 +102,7 @@ public class MemberController {
 	@PostMapping(value = "rsacall")
 	public @ResponseBody Map<String, String> joinPage(HttpServletRequest req, HttpSession session)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
-		session.setAttribute("privateKey",md.getPrivateKey(1));
+		session.setAttribute("privateKey", md.getPrivateKey(1));
 		return ms.Rsacall(req, session);
 	}
 
@@ -147,7 +152,7 @@ public class MemberController {
 
 		mv.setUSER_ID(id);
 		mv.setUSER_PASSWORD(pw);
-		
+
 		if (null != ms.memberLogin(mv)) {
 			mv = ms.memberLogin(mv);
 			if (mv.getUSER_AUTH().equals("Y")) {
@@ -170,13 +175,13 @@ public class MemberController {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		String email = req.getParameter("email");
-		String name=req.getParameter("name");
+		String name = req.getParameter("name");
 		HttpSession session = req.getSession();
 		PrivateKey privateKey = (PrivateKey) session.getAttribute("privateKey");
 		id = ms.decryptRsa(privateKey, id);
 		pw = ms.decryptRsa(privateKey, pw);
 		email = ms.decryptRsa(privateKey, email);
-		name =ms.decryptRsa(privateKey, name);
+		name = ms.decryptRsa(privateKey, name);
 		// 공백제거
 		id.replace("\\s", "");
 		pw.replace("\\s", "");
@@ -185,7 +190,8 @@ public class MemberController {
 		// 아이디 비밀번호 규격검사
 		if (id.length() > 3 && id.length() < 13 && pw.length() > 3 && pw.length() < 13) {
 			// 아이디 비밀번호 특수문자 검사
-			if (Pattern.matches("^[a-zA-Z0-9]*$", id) && Pattern.matches("^[a-zA-Z0-9]*$", pw)) {
+			if (!Pattern.matches("[ !@#$%^&*(),.?\\\":{}|<>]", id)
+					&& !Pattern.matches("[ !@#$%^&*(),.?\\\\\\\":{}|<>]", name)) {
 				// 아이디,이메일 중복검사
 				if (ms.idCheck(id) && ms.emailCheck(email)) {
 					mv.setUSER_ID(id);
@@ -211,7 +217,7 @@ public class MemberController {
 
 	// 이메일 중복검사
 	@PostMapping(value = "emailcheck")
-	@ResponseStatus(value=HttpStatus.OK)
+	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody boolean emailCheck(HttpServletRequest req) {
 		return ms.emailCheck(req.getParameter("email"));
 	}
@@ -270,7 +276,7 @@ public class MemberController {
 		PrivateKey privateKey = (PrivateKey) session.getAttribute("privateKey");
 		pw = ms.decryptRsa(privateKey, pw);
 		pw.replace("\\s", "");
-		if (pw.length() > 3 && pw.length() < 13 && Pattern.matches("^[a-zA-Z0-9]*$", pw)) {
+		if (pw.length() > 3 && pw.length() < 13) {
 			String id = (String) session.getAttribute("changepwtarget");
 			if (StringUtils.isEmpty(id)) {
 				return false;
@@ -411,6 +417,10 @@ public class MemberController {
 		ms.memberSecession(seq);
 		session.invalidate();
 		return true;
+	}
+	
+	public String getUserSeqByName(String name) {
+		return md.getUserSeqByName(name);
 	}
 
 	/*

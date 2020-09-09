@@ -1,3 +1,26 @@
+$.ajax({
+    url: '/sessioncheck',
+    type: 'post',
+    success: function (result) {
+        if (!result) {
+            Swal.fire({
+                icon: 'info',
+                title: '접근 불가',
+                text: '권한이 없습니다',
+                onAfterClose: () => {
+                    location.href = '/page/login';
+                }
+            });
+        }
+    },
+    error: function () {
+        Swal.fire({
+            icon: 'error',
+            title: '세션체크 에러',
+            text: '세션체크 중 문제가 발생했습니다',
+        });
+    },
+});
 // 마커를 담을 배열입니다
 var markers = [];
 var mapContainer;
@@ -258,5 +281,57 @@ $(document).ready(function () {
         $(this).parent().parent().hide();
         trNum--;
         $('#man-info' + trNum).append('<td> <button class="minus-btn">-</button></td>');
+    });
+    
+    
+    $('#submit-btn').click(function(){
+    	var json={};
+    	json.name=$('#site-name').val();
+    	json.addr=$('#site-addr').val();
+    	json.man=$('#meta-man').val();
+    	json.desc=$('#site-description').val();
+    	var siteInfo='';
+    	for(var i=0;i<3;i++){
+    		if($('#man-info'+i+' .site-man').val() && $('#man-info'+i+' .site-phone').val()){
+        		siteInfo=siteInfo+$('#man-info'+i+' .site-man').val()+','+$('#man-info'+i+' .site-phone').val()+',';
+    		}
+    	}
+    	
+    	json.siteInfo=siteInfo.substring(0,siteInfo.length-1);
+    	if(json.name && json.addr){
+    	   	$.ajax({
+        		url:'/siteinsert',
+        		type:'post',
+        		data: JSON.stringify(json),
+        		 contentType: "application/json; charset=utf-8;",
+                 dataType: "json",
+        		success:function(result){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '사이트 등록 성공',
+                        text: '사이트 등록을 성공하였습니다',
+                        onAfterClose: () => {
+                            location.href = '/page/site';
+                        }
+                    });
+        		},
+        		error:function(e){
+                    Swal.fire({
+                        icon: 'error',
+                        title: '사이트 등록 실패',
+                        text: '사이트 등록에 실패하였습니다 관리자에게 문의해주세요.'
+                    });
+                    console.log(e)
+        		}
+        	});
+    	}else{
+            Swal.fire({
+                icon: 'error',
+                title: '빈값 비허용',
+                text: '사이트 명 또는 주소를 채워주세요'
+            });
+    	}
+ 
+    	
     });
 });

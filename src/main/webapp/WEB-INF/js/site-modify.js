@@ -1,3 +1,26 @@
+$.ajax({
+    url: '/sessioncheck',
+    type: 'post',
+    success: function (result) {
+        if (!result) {
+            Swal.fire({
+                icon: 'info',
+                title: '접근 불가',
+                text: '권한이 없습니다',       
+                onAfterClose: () => {
+                    location.href = '/page/login';
+                }
+            });
+        }
+    },
+    error: function () {
+        Swal.fire({
+            icon: 'error',
+            title: '세션체크 에러',
+            text: '세션체크 중 문제가 발생했습니다',
+        });
+    },
+});
 // 마커를 담을 배열입니다
 var markers = [];
 var mapContainer;

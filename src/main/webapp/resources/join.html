@@ -27,11 +27,11 @@
             <div class="join-box">
                 <form id="join-form" onsubmit="return false">
                     <img src="/img/logo.PNG" />
-                    <input type="text" placeholder="Name" id="join-name" />
-                    <input type="email" placeholder="Email" id="join-email" />
-                    <input type="text" placeholder="ID" id="join-id" />
-                    <input type="password" placeholder="Password" id="join-pw" />
-                    <input type="password" placeholder="Password Check" id="join-pw2" /> <br />
+                    <input type="text" placeholder="Name" id="join-name" maxLength="15"/>
+                    <input type="email" placeholder="Email" id="join-email" maxLength="255"/>
+                    <input type="text" placeholder="ID" id="join-id" maxLength="15"/>
+                    <input type="password" placeholder="Password" id="join-pw" maxLength="12"/>
+                    <input type="password" placeholder="Password Check" id="join-pw2" maxLength="12"/> <br />
                     <button id="join-btn">join</button>
                 </form>
             </div>

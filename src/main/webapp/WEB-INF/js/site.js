@@ -1,3 +1,26 @@
+$.ajax({
+    url: '/sessioncheck',
+    type: 'post',
+    success: function (result) {
+        if (!result) {
+            Swal.fire({
+                icon: 'info',
+                title: '접근 불가',
+                text: '권한이 없습니다',
+                onAfterClose: () => {
+                    location.href = '/page/login';
+                }
+            });
+        }
+    },
+    error: function () {
+        Swal.fire({
+            icon: 'error',
+            title: '세션체크 에러',
+            text: '세션체크 중 문제가 발생했습니다',
+        });
+    },
+});
 // 지도와 로드뷰를 감싸고 있는 div의 class를 변경하여 지도를 숨기거나 보이게 하는 함수입니다
 function toggleMap(active) {
     if (active) {
@@ -13,6 +36,20 @@ $(document).ready(() => {
     $('.header').load('/resources/header.html?' + new Date().getTime());
     //siteMap();
     $(document).on('click', '.site-wrap span', function () {});
+    var initData={idx:0,count:20};
+    console.log(initData)
+    $.ajax({
+    	url:'/getSiteList',
+    	type:'get',
+    	dataType:"json", 
+    	data:{idx:0,count:20},
+    	success:function(result){
+    		console.log(result)
+    	},error:function(e){
+    		console.log(e);
+    	}
+    });
+    
 
     $('#insert-btn').click(function () {
         location.href = '/page/site/write';

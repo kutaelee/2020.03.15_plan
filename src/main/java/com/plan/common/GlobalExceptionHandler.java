@@ -15,7 +15,6 @@ public class GlobalExceptionHandler extends RuntimeException {
 	// 모든 예외 처리
 	@ExceptionHandler(Exception.class)
 	public void handlerException(HttpServletRequest req, HttpServletResponse response, Exception e) throws Exception {
-		e.printStackTrace();
 		StringWriter error = new StringWriter();
 		e.printStackTrace(new PrintWriter(error));
 		

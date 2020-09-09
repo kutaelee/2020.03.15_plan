@@ -95,17 +95,21 @@ input {
     }
     .nav ul {
         height: 100vh;
-        width: 80%;
-        padding: 20% 10%;
+        width: 100%;
+        padding: 20% 0;
     }
     .nav li:nth-child(1) {
-        margin: 5% 0;
+        margin: 5% 0 7% 0;
     }
     .nav li {
         font-size: 20px;
         width: 100%;
-        text-align: center;
-        margin: 5% 0;
+        margin: 7% 0;
+    }
+    .nav a{
+    	width:100%;
+    	position:absolute;
+    	text-align: center;
     }
     #nav-toggle {
         cursor: pointer;

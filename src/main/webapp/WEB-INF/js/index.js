@@ -12,7 +12,7 @@ $(document).ready(function () {
     var sectionTop = [];
     sectionTop.push($('#member-layer').offset().top);
     sectionTop.push($('#skew-layer').offset().top);
-    sectionTop.push($('#util-layer').offset().top-100);
+    sectionTop.push($('#util-layer').offset().top - 150);
     $('#nav1').css('color', 'white');
 
     if (width < 700) {
