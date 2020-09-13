@@ -3,6 +3,8 @@ package com.plan.member;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.spec.InvalidKeySpecException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -18,8 +20,6 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -32,6 +32,10 @@ public class MemberController {
 	@Autowired
 	MemberDAO md;
 
+	@GetMapping(value= "showMember")
+	public @ResponseBody List<HashMap<String,Object>> showmember(){
+		return md.showmember();
+	}
 	// 로그인 세션체크
 	@PostMapping(value = "sessioncheck")
 	public @ResponseBody boolean sessionCheck(HttpSession session) {
@@ -423,6 +427,9 @@ public class MemberController {
 		return md.getUserSeqByName(name);
 	}
 
+	public String getUserNameBySeq(String seq) {
+		return md.getUserNameBySeq(seq);
+	}
 	/*
 	 * @PostMapping(value = "googlelogin") public @ResponseBody boolean
 	 * googleLogin(HttpServletRequest req, HttpSession session) { String email =

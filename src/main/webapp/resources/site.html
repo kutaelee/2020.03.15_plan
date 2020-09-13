@@ -7,15 +7,10 @@
         <div class="header"></div>
         <div class="site-wrap">
             <div class="search-wrap">
-                <input type="text" id="search-keyword" placeholder="사이트명" />
-                <button>검색</button>
+                <input type="text" id="search-keyword" placeholder="사이트명" maxlength="255" />
+                <button id="site-search-btn">검색</button>
             </div>
-            <div class="site-list">
-                <span class="siteBx">근로복지공단근로복지공단근로복지공단</span> <span class="siteBx">근로복지공단</span> <span class="siteBx">근로복지공단근로복지공단</span>
-                <span class="siteBx">근로복지공단</span> <span class="siteBx">근로복지공단</span><span class="siteBx">근로복지공단</span>
-                <span class="siteBx">근로복지공단근로복지공단근로복지공단근로복지공단근로복지공단근로복지공단근로복지공단근로복지공단</span><span class="siteBx">근로복지공단</span
-                ><span class="siteBx">근로복지공단</span>
-            </div>
+            <div class="site-list"></div>
         </div>
         <div class="layer" id="layer1">
             <div class="map-wrap">
@@ -23,18 +18,19 @@
                     <button id="modify-btn"><img src="/img/gear.png" alt="수정" title="수정" /></button>
                     <button id="insert-btn"><img src="/img/writing.png" alt="작성" title="작성" /></button>
                 </div>
-                <h2>메타빌드</h2>
-                <table>
+                <h2 id="site-name">메타빌드</h2>
+                <p id="site-meta-user"></p>
+                <table id="site-manager-tb">
                     <tr>
                         <th>담당자</th>
                         <th>연락처</th>
                     </tr>
                     <tr>
-                        <td>홍길동</td>
-                        <td>010-0000-0000</td>
+                        <td>이규태</td>
+                        <td>010-9290-3981</td>
                     </tr>
                 </table>
-                <p>주소 : 서울특별시 서초구 효령로 208</p>
+                <p id="site-addr">주소 : 서울특별시 서초구 효령로 208</p>
 
                 <div id="container" class="view_map">
                     <div id="mapWrapper" style="width: 100%; height: 100%; position: relative">
@@ -49,16 +45,7 @@
                     </div>
                 </div>
                 <h2>정보</h2>
-                <p id="site-descript">
-                    국회의원과 정부는 법률안을 제출할 수 있다. 재판의 전심절차로서 행정심판을 할 수 있다. 행정심판의 절차는 법률로 정하되, 사법절차가 준용되어야 한다. 공무원의 신분과 정치적 중립성은
-                    법률이 정하는 바에 의하여 보장된다. 훈장등의 영전은 이를 받은 자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 국가는 재해를 예방하고 그 위험으로부터 국민을 보호하기
-                    위하여 노력하여야 한다. 국군은 국가의 안전보장과 국토방위의 신성한 의무를 수행함을 사명으로 하며, 그 정치적 중립성은 준수된다. 이 헌법공포 당시의 국회의원의 임기는 제1항에 의한
-                    국회의 최초의 집회일 전일까지로 한다. 모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 국가는 개인이 가지는 불가침의 기본적 인권을 확인하고 이를 보장할
-                    의무를 진다. 근로조건의 기준은 인간의 존엄성을 보장하도록 법률로 정한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 형사피의자 또는
-                    형사피고인으로서 구금되었던 자가 법률이 정하는 불기소처분을 받거나 무죄판결을 받은 때에는 법률이 정하는 바에 의하여 국가에 정당한 보상을 청구할 수 있다. 이 헌법중 공무원의 임기
-                    또는 중임제한에 관한 규정은 이 헌법에 의하여 그 공무원이 최초로 선출 또는 임명된 때로부터 적용한다. 국민경제자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 나는 헌법을
-                    준수하고 국가를 보위하며 조국의 평화적 통일과 국민의 자유와 복리의 증진 및 민족문화의 창달에 노력하여 대통령으로서의 직책을 성실히 수행할 것을 국민 앞에 엄숙히 선서합니다.
-                </p>
+                <p id="site-descript"></p>
             </div>
         </div>
     </body>

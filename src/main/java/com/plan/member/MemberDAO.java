@@ -12,8 +12,8 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public List<HashMap<String,Object>> showmember(MemberVO mv){
-		return sqlsession.selectList("member.showmember",mv);
+	public List<HashMap<String,Object>> showmember(){
+		return sqlsession.selectList("member.showmember");
 	}
 	public MemberVO idCheck(String id) {
 		return sqlsession.selectOne("member.idcheck",id);
@@ -78,5 +78,8 @@ public class MemberDAO {
 	public String getUserSeqByName(String name) {
 		return sqlsession.selectOne("member.getUserSeqByName",name);
 		
+	}
+	public String getUserNameBySeq(String seq) {
+		return sqlsession.selectOne("member.getUserNameBySeq",seq);
 	}
 }

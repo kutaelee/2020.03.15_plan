@@ -44,7 +44,7 @@ public class MemberService {
 
 	// 멤버 출력
 	public List<HashMap<String, Object>> showmember() {
-		return md.showmember(mv);
+		return md.showmember();
 	}
 
 	// 로그인

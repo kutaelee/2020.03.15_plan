@@ -8,7 +8,9 @@
 
 <mapper namespace="member">
 	<select id="showmember" resultType="hashmap">
-		SELECT * FROM USER;
+		SELECT
+		USER_SEQ,USER_GRADE,USER_ID,USER_NAME,USER_EMAIL FROM USER WHERE
+		USER_AUTH='Y';
 	</select>
 	<select id="idcheck" parameterType="string"
 		resultType="MemberVO">
@@ -19,7 +21,8 @@
 		SELECT * FROM USER WHERE USER_EMAIL=#{email}
 	</select>
 	<insert id="join">
-		INSERT INTO USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_PRIVATEKEY)
+		INSERT INTO
+		USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_PRIVATEKEY)
 		VALUES(#{USER_ID},#{USER_PASSWORD},#{USER_NAME},#{USER_EMAIL},#{USER_PRIVATEKEY})
 	</insert>
 
@@ -28,56 +31,78 @@
 		SELECT * FROM USER WHERE USER_ID=#{id}
 	</select>
 	<select id="login" resultType="MemberVO">
-		SELECT * FROM USER WHERE USER_ID=#{id} AND USER_PW=#{password}
+		SELECT * FROM USER WHERE
+		USER_ID=#{id} AND USER_PW=#{password}
 	</select>
 	<update id="authupdate" parameterType="string">
-		UPDATE USER SET USER_PRIVATEKEY=NULL,USER_AUTH='Y' WHERE USER_ID=#{id}
+		UPDATE USER SET
+		USER_PRIVATEKEY=NULL,USER_AUTH='Y' WHERE USER_ID=#{id}
 	</update>
 	<select id="findid" parameterType="string" resultType="string">
-		SELECT USER_ID FROM USER WHERE USER_EMAIL=#{email}
+		SELECT
+		USER_ID FROM USER WHERE USER_EMAIL=#{email}
 	</select>
 	<select id="findpw" parameterType="MemberVO" resultType="string">
-		SELECT ID FROM USER WHERE USER_ID=#{USER_ID} AND USER_EMAIL=#{USER_EMAIL}
+		SELECT
+		ID FROM USER WHERE USER_ID=#{USER_ID} AND USER_EMAIL=#{USER_EMAIL}
 	</select>
 	<update id="privatekeychange">
-		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE USER_ID=#{id}
+		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE
+		USER_ID=#{id}
 	</update>
 	<select id="membercheck" resultType="string">
-		SELECT ID FROM USER WHERE USER_ID=#{id} AND USER_PRIVATEKEY=#{privatekey}
+		SELECT ID FROM USER WHERE
+		USER_ID=#{id} AND USER_PRIVATEKEY=#{privatekey}
 	</select>
 	<update id="pwupdate">
-		UPDATE USER SET USER_PASSWORD=#{password},USER_PRIVATEKEY=NULL WHERE
+		UPDATE USER SET
+		USER_PASSWORD=#{password},USER_PRIVATEKEY=NULL WHERE
 		USER_ID=#{id}
 	</update>
 	<update id="emailupdate">
-		UPDATE USER SET USER_EMAIL=#{email} WHERE USER_ID=#{id}
+		UPDATE USER SET USER_EMAIL=#{email} WHERE
+		USER_ID=#{id}
 	</update>
 	<update id="tokenupdate">
-		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE USER_ID=#{id}
+		UPDATE USER SET USER_PRIVATEKEY=#{privatekey} WHERE
+		USER_ID=#{id}
 	</update>
 	<select id="MemberCheckSeq" parameterType="int"
 		resultType="hashmap">
-		SELECT USER_SEQ,USER_ID,USER_EMAIL,USER_NAME FROM USER WHERE SEQ=#{seq}
+		SELECT USER_SEQ,USER_ID,USER_EMAIL,USER_NAME FROM USER
+		WHERE SEQ=#{seq}
 	</select>
 	<select id="seqSelectPw" parameterType="int" resultType="string">
-		SELECT USER_PASSWORD FROM USER WHERE USER_SEQ=#{seq}
+		SELECT
+		USER_PASSWORD FROM USER WHERE USER_SEQ=#{seq}
 	</select>
 	<select id="seqSelectId" parameterType="int" resultType="string">
-		SELECT USER_ID FROM USER WHERE USER_SEQ=#{seq}
+		SELECT
+		USER_ID FROM USER WHERE USER_SEQ=#{seq}
 	</select>
 	<delete id="memberSecession" parameterType="int">
-		DELETE FROM USER WHERE USER_SEQ=#{seq}
+		DELETE FROM USER
+		WHERE USER_SEQ=#{seq}
 	</delete>
 	<update id="privatekeySetNull" parameterType="string">
-		UPDATE USER SET USER_PRIVATEKEY=NULL WHERE USER_ID=#{id}
+		UPDATE USER SET
+		USER_PRIVATEKEY=NULL WHERE USER_ID=#{id}
 	</update>
-	<select id="getPrivateKey" resultType="string" parameterType="int">
+	<select id="getPrivateKey" resultType="string"
+		parameterType="int">
 		SELECT PRIVATE_KEY FROM USER_KEY WHERE KEY_SEQ=#{seq}
 	</select>
-	<select id="getUserGrade" resultType="int" parameterType="string">
+	<select id="getUserGrade" resultType="int"
+		parameterType="string">
 		SELECT USER_GRADE FROM USER WHERE USER_SEQ=#{seq}
 	</select>
-	<select id="getUserSeqByName" resultType="string" parameterType="string">
+	<select id="getUserSeqByName" resultType="string"
+		parameterType="string">
 		SELECT USER_SEQ FROM USER WHERE USER_NAME=#{name}
+	</select>
+
+	<select id="getUserNameBySeq" resultType="string"
+		parameterType="string">
+		SELECT USER_NAME FROM USER WHERE USER_SEQ=#{seq}
 	</select>
 </mapper>

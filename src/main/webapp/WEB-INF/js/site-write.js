@@ -9,7 +9,7 @@ $.ajax({
                 text: '권한이 없습니다',
                 onAfterClose: () => {
                     location.href = '/page/login';
-                }
+                },
             });
         }
     },
@@ -33,7 +33,11 @@ function searchPlaces() {
     var keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+        Swal.fire({
+            icon: 'info',
+            title: '검색 불가',
+            text: '검색어를 입력해주세요',
+        });
         return false;
     }
 
@@ -51,10 +55,18 @@ function placesSearchCB(data, status, pagination) {
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-        alert('검색 결과가 존재하지 않습니다.');
+        Swal.fire({
+            icon: 'info',
+            title: '검색 실패',
+            text: '검색 결과가 존재하지 않습니다.',
+        });
         return;
     } else if (status === kakao.maps.services.Status.ERROR) {
-        alert('검색 결과 중 오류가 발생했습니다.');
+        Swal.fire({
+            icon: 'error',
+            title: '검색 실패',
+            text: '검색 결과 중 오류가 발생했습니다.',
+        });
         return;
     }
 }
@@ -213,6 +225,21 @@ function removeAllChildNods(el) {
 $(document).ready(function () {
     $('.header').load('/resources/header.html?' + new Date().getTime());
 
+    $.ajax({
+        url: '/showMember',
+        type: 'get',
+        datatype: 'json',
+        success: function (result) {
+            for (item of result) {
+                $('#meta-man').append(new Option(item.USER_NAME + ' (' + item.USER_ID + ')', item.USER_SEQ));
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        },
+    });
+
+    /* maps */
     (mapContainer = document.getElementById('site-map')), // 지도를 표시할 div
         (mapOption = {
             center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -245,7 +272,9 @@ $(document).ready(function () {
 
     /* modal toggle */
     $('#addr-search-btn').click(function () {
+        $('#keyword').val($('#site-name').val());
         $('.modal').fadeIn('fast');
+        $('#keyword').focus();
     });
 
     $('#modal-close-btn').click(function () {
@@ -282,56 +311,56 @@ $(document).ready(function () {
         trNum--;
         $('#man-info' + trNum).append('<td> <button class="minus-btn">-</button></td>');
     });
-    
-    
-    $('#submit-btn').click(function(){
-    	var json={};
-    	json.name=$('#site-name').val();
-    	json.addr=$('#site-addr').val();
-    	json.man=$('#meta-man').val();
-    	json.desc=$('#site-description').val();
-    	var siteInfo='';
-    	for(var i=0;i<3;i++){
-    		if($('#man-info'+i+' .site-man').val() && $('#man-info'+i+' .site-phone').val()){
-        		siteInfo=siteInfo+$('#man-info'+i+' .site-man').val()+','+$('#man-info'+i+' .site-phone').val()+',';
-    		}
-    	}
-    	
-    	json.siteInfo=siteInfo.substring(0,siteInfo.length-1);
-    	if(json.name && json.addr){
-    	   	$.ajax({
-        		url:'/siteinsert',
-        		type:'post',
-        		data: JSON.stringify(json),
-        		 contentType: "application/json; charset=utf-8;",
-                 dataType: "json",
-        		success:function(result){
+
+    $('#submit-btn').click(function () {
+        var json = {};
+        json.name = $('#site-name').val();
+        json.addr = $('#site-addr').val();
+        json.man = $('#meta-man').val();
+        json.desc = $('#site-description')
+            .val()
+            .replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+        var siteInfo = '';
+        for (var i = 0; i < 3; i++) {
+            if ($('#man-info' + i + ' .site-man').val() && $('#man-info' + i + ' .site-phone').val()) {
+                siteInfo = siteInfo + $('#man-info' + i + ' .site-man').val() + ',' + $('#man-info' + i + ' .site-phone').val() + ',';
+            }
+        }
+
+        json.siteInfo = siteInfo.substring(0, siteInfo.length - 1);
+        if (json.name && json.addr) {
+            $.ajax({
+                url: '/siteinsert',
+                type: 'post',
+                data: JSON.stringify(json),
+                contentType: 'application/json; charset=utf-8;',
+                dataType: 'json',
+                success: function (result) {
                     Swal.fire({
                         icon: 'success',
                         title: '사이트 등록 성공',
                         text: '사이트 등록을 성공하였습니다',
                         onAfterClose: () => {
                             location.href = '/page/site';
-                        }
+                        },
                     });
-        		},
-        		error:function(e){
+                },
+                error: function (e) {
                     Swal.fire({
                         icon: 'error',
                         title: '사이트 등록 실패',
-                        text: '사이트 등록에 실패하였습니다 관리자에게 문의해주세요.'
+                        text: '사이트 등록에 실패하였습니다 관리자에게 문의해주세요.',
                     });
-                    console.log(e)
-        		}
-        	});
-    	}else{
+                    console.log(e);
+                },
+            });
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: '빈값 비허용',
-                text: '사이트 명 또는 주소를 채워주세요'
+                text: '사이트 명 또는 주소를 채워주세요',
             });
-    	}
- 
-    	
+        }
     });
 });

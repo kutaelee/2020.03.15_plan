@@ -11,8 +11,20 @@
 		INSERT INTO SITE(SITE_NAME,SITE_ADDRESS,SITE_MANAGER,SITE_EMAIL,SITE_META_USER_SEQ,SITE_DESCRIPT) 
 		VALUES(#{name},#{addr},#{siteInfo},#{email},#{manSeq},#{desc})
 	</insert>
-	<select id="getSiteList" parameterType="hashmap">
-		SELECT * FROM SITE ORDER BY SITE_SEQ DESC LIMIT #{idx},#{count};
+	<select id="getSiteList" resultType="hashmap" parameterType="hashmap">
+		SELECT SITE_NAME,SITE_SEQ FROM SITE ORDER BY SITE_SEQ DESC LIMIT #{idx},#{count}
+	</select>
+	<select id="getSiteCount" resultType="int">
+		SELECT COUNT(*) FROM SITE
+	</select>
+	<select id="getSiteInfoBySeq" resultType="hashmap" parameterType="hashmap">
+		SELECT * FROM SITE WHERE SITE_SEQ=#{seq}
+	</select>
+	<select id="lastSiteInfo" resultType="hashmap">
+		SELECT * FROM SITE ORDER BY SITE_SEQ DESC LIMIT 0,1
+	</select>
+	<select id="getSiteListByName" resultType="hashmap" parameterType="hashmap">
+		SELECT SITE_NAME,SITE_SEQ FROM SITE WHERE SITE_NAME LIKE CONCAT('%',#{keyword},'%');
 	</select>
 </mapper>
   
