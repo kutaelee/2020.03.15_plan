@@ -1,3 +1,5 @@
+//유지보수 담당자 정보 row
+var trNum = -1;
 $.ajax({
     url: '/sessioncheck',
     type: 'post',
@@ -6,10 +8,10 @@ $.ajax({
             Swal.fire({
                 icon: 'info',
                 title: '접근 불가',
-                text: '권한이 없습니다',       
+                text: '권한이 없습니다',
                 onAfterClose: () => {
                     location.href = '/page/login';
-                }
+                },
             });
         }
     },
@@ -21,6 +23,14 @@ $.ajax({
         });
     },
 });
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+        results = regex.exec(location.search);
+    return results == null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
 // 마커를 담을 배열입니다
 var markers = [];
 var mapContainer;
@@ -210,9 +220,71 @@ function removeAllChildNods(el) {
     }
 }
 
+// 사이트정보 바인딩
+function getSiteInfoBySeq() {
+    var data = {};
+    data.seq = getParameterByName('site');
+    console.log(data);
+    $.ajax({
+        url: '/getSiteInfoBySeq',
+        contentType: 'application/json; charset=utf-8;',
+        type: 'post',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        success: function (result) {
+            $('#site-name').val(result.SITE_NAME);
+            $('#site-addr').val(result.SITE_ADDRESS);
+            if (result.SITE_MANAGER) {
+                var siteMan = result.SITE_MANAGER.split(',');
+                $('.site-man-info').html('<tr><th>담당자</th><th>연락처</th></tr>');
+                var j = 0;
+                for (var i = 0; i < siteMan.length; i += 2) {
+                    $('.site-man-info').append('<tr id="man-info' + j + '"></tr>');
+                    $('#man-info' + j)
+                        .append('<td> <input type="text" class="site-man"  placeholder="홍길동" value="' + siteMan[i] + '"> </td>')
+                        .append('<td> <input type="text" class="site-phone" placeholder="연락처" value="' + siteMan[i + 1] + '"> </td> </tr>');
+                    j++;
+                    trNum++;
+                }
+                console.log(trNum);
+                $('#man-info' + trNum).append('<td> <button class="minus-btn">-</button></td>');
+                for (var i = trNum; i < 2; i++) {
+                    $('.site-man-info').append(
+                        '<tr id="man-info' +
+                            (i + 1) +
+                            '" style="display: none;"><td> <input type="text" class="site-man"  placeholder="홍길동"> </td> <td> <input type="text" class="site-phone" placeholder="연락처"> </td></tr>'
+                    );
+                }
+            }
+            if (result.SITE_META_USER_NAME != '미정') {
+                console.log('a');
+                $('#meta-man').val(result.SITE_META_USER_SEQ).prop('selected', true);
+            }
+            $('#site-description').text(result.SITE_DESCRIPT);
+
+            console.log(result);
+        },
+        error: function (e) {},
+    });
+}
+
 $(document).ready(function () {
     $('.header').load('/resources/header.html?' + new Date().getTime());
 
+    $.ajax({
+        url: '/showMember',
+        type: 'get',
+        datatype: 'json',
+        success: function (result) {
+            for (item of result) {
+                $('#meta-man').append(new Option(item.USER_NAME + ' (' + item.USER_ID + ')', item.USER_SEQ));
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        },
+    });
+    getSiteInfoBySeq();
     $('#keyword').val($('#site-name').val());
     (mapContainer = document.getElementById('site-map')), // 지도를 표시할 div
         (mapOption = {
@@ -243,7 +315,9 @@ $(document).ready(function () {
 
     /* modal toggle */
     $('#addr-search-btn').click(function () {
+        $('#keyword').val($('#site-name').val());
         $('.modal').fadeIn('fast');
+        $('#keyword').focus();
     });
 
     $('#modal-close-btn').click(function () {
@@ -255,21 +329,81 @@ $(document).ready(function () {
         $('#site-addr').val($(this).children('span').first().text());
         $('.modal').fadeOut('fast');
     });
-    var trNum = 1;
+
+    for (let i = 0; i < 3; i++) {
+        $('.site-man-info').append('<tr id="man-info' + i + '" style="display:none"></tr>');
+        $('#man-info' + i)
+            .append('<td> <input type="text" class="site-man"  placeholder="홍길동"> </td>')
+            .append('<td> <input type="text" class="site-phone" placeholder="연락처"> </td> </tr>');
+    }
+
     $('#info-add-btn').click(function () {
+        trNum++;
         if (trNum < 3) {
-            $('.site-man-info').append('<tr id="man-info' + trNum + '"></tr>');
-            $('#man-info' + trNum)
-                .append('<td> <input type="text" class="site-man"  placeholder="홍길동"> </td>')
-                .append('<td> <input type="text" class="site-phone" placeholder="숫자만 입력"> </td>')
-                .append('<td> <button class="minus-btn">-</button></td> </tr>');
-            trNum++;
-        } else {
+            $('.minus-btn').remove();
+            $('#man-info' + trNum).show();
+            $('#man-info' + trNum).append('<td> <button class="minus-btn">-</button></td>');
+        } else if (trNum > 2) {
+            trNum--;
             alert('담당자 정보는 3명까지 입력 가능합니다.');
         }
     });
     $(document).on('click', '.minus-btn', function () {
-        $(this).parent().parent().remove();
+        $(this).parent().parent().hide();
         trNum--;
+        $('#man-info' + trNum).append('<td> <button class="minus-btn">-</button></td>');
+    });
+
+    $('#submit-btn').click(function () {
+        var json = {};
+        json.seq = getParameterByName('site');
+        json.name = $('#site-name').val();
+        json.addr = $('#site-addr').val();
+        json.man = $('#meta-man').val();
+        json.desc = $('#site-description')
+            .val()
+            .replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+        var siteInfo = '';
+        for (var i = 0; i < 3; i++) {
+            if ($('#man-info' + i + ' .site-man').val() && $('#man-info' + i + ' .site-phone').val()) {
+                siteInfo = siteInfo + $('#man-info' + i + ' .site-man').val() + ',' + $('#man-info' + i + ' .site-phone').val() + ',';
+            }
+        }
+
+        json.siteInfo = siteInfo.substring(0, siteInfo.length - 1);
+        if (json.name && json.addr) {
+            $.ajax({
+                url: '/siteModify',
+                type: 'post',
+                data: JSON.stringify(json),
+                contentType: 'application/json; charset=utf-8;',
+                dataType: 'json',
+                success: function (result) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '사이트 수정 성공',
+                        text: '사이트 수정을 성공하였습니다',
+                        onAfterClose: () => {
+                            location.href = '/page/site';
+                        },
+                    });
+                },
+                error: function (e) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '사이트 수정 실패',
+                        text: '사이트 수정에 실패하였습니다 관리자에게 문의해주세요.',
+                    });
+                    console.log(e);
+                },
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: '빈값 비허용',
+                text: '사이트 명 또는 주소를 채워주세요',
+            });
+        }
     });
 });

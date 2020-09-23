@@ -17,4 +17,14 @@ public class SiteService {
 		sd.siteInsert(map);
 	}
 
+	public void siteDelete(HashMap<String, Object> map) {
+		sd.siteDelete(map);
+		
+	}
+
+	public void siteModify(HashMap<String, Object> map) {
+		sd.siteModify(map);
+		
+	}
+
 }

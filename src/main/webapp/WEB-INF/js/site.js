@@ -171,13 +171,13 @@ function siteBind(result) {
 
     //site memo bind
     $('#site-descript').html(result.SITE_DESCRIPT);
-    $('#site-meta-user').text(result.SITE_META_USER_NAME);
+    $('#site-meta-user').text('기술지원 담당자 : ' + result.SITE_META_USER_NAME);
     $(window).scrollTop(0);
 }
 
 function SiteListSearch() {
     var json = {};
-    json.keyword = $('#search-keyword').val();
+    json.keyword = $('#search-keyword').val().trim();
     if (json.keyword) {
         searchMode = true;
         $.ajax({
@@ -187,16 +187,15 @@ function SiteListSearch() {
             contentType: 'application/json; charset=utf-8;',
             dataType: 'json',
             success: function (result) {
-            	console.log(result)
-            	if(result[0]){
-            		   $('.site-list').text('');
-                       for (item of result) {
-                           $('.site-list').append('<span class="siteBx" id="site-name' + item.SITE_SEQ + '" seq="' + item.SITE_SEQ + '">' + item.SITE_NAME + '</span>');
-                       }
-            	}else{
-            		   $('.site-list').html('<p id="site-empty">해당 사이트가 없습니다.</p>');
-            	}
-             
+                console.log(result);
+                if (result[0]) {
+                    $('.site-list').text('');
+                    for (item of result) {
+                        $('.site-list').append('<span class="siteBx" id="site-name' + item.SITE_SEQ + '" seq="' + item.SITE_SEQ + '">' + item.SITE_NAME + '</span>');
+                    }
+                } else {
+                    $('.site-list').html('<p id="site-empty">해당 사이트가 없습니다.</p>');
+                }
             },
             error: function (e) {
                 console.log(e);
@@ -211,6 +210,19 @@ function SiteListSearch() {
     }
 }
 
+function lastSiteInfo() {
+    $.ajax({
+        url: '/lastSiteInfo',
+        type: 'get',
+        success: function (result) {
+            console.log(result);
+            siteBind(result);
+        },
+        error: function (e) {
+            console.log(e);
+        },
+    });
+}
 $(document).ready(() => {
     $('.header').load('/resources/header.html?' + new Date().getTime());
     $(document).on('click', '.site-wrap span', function () {});
@@ -221,16 +233,7 @@ $(document).ready(() => {
     listInfo.count = 20;
     getSiteList(listInfo);
 
-    $.ajax({
-        url: '/lastSiteInfo',
-        type: 'get',
-        success: function (result) {
-            siteBind(result);
-        },
-        error: function (e) {
-            console.log(e);
-        },
-    });
+    lastSiteInfo();
 
     $('.site-list').scroll(function () {
         if (!searchMode) {
@@ -247,7 +250,7 @@ $(document).ready(() => {
     $(document).on('click', '.siteBx', function () {
         var json = {};
         json.seq = $(this).attr('seq');
-        currentSiteSeq=$(this).attr('seq');
+        currentSiteSeq = $(this).attr('seq');
         $.ajax({
             url: '/getSiteInfoBySeq',
             type: 'post',
@@ -268,7 +271,48 @@ $(document).ready(() => {
     });
 
     $('#modify-btn').click(function () {
-        location.href = '/page/site/modify';
+        var seq = $('#site-name').attr('class');
+        location.href = '/page/site/modify?site=' + seq;
+    });
+
+    $('#delete-btn').click(function () {
+        var list = listInfo;
+        Swal.fire({
+            title: '정말 삭제하시겠습니까?',
+            text: '삭제하게되면 복구가 불가능합니다',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '삭제',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var data = {};
+                data.seq = $('#site-name').attr('class');
+                console.log(data.seq);
+                $.ajax({
+                    url: '/siteDelete',
+                    type: 'post',
+                    contentType: 'application/json; charset=utf-8;',
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    success: function (result) {
+                        if (result) {
+                            Swal.fire('삭제완료!', '삭제가 완료되었습니다', 'success');
+                            $('.site-list').text('');
+                            getSiteList(list);
+                            lastSiteInfo();
+                        } else {
+                            Swal.fire('삭제실패', '관리자에게 문의해주세요', 'error');
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        Swal.fire('삭제실패', '관리자에게 문의해주세요', 'error');
+                    },
+                });
+            }
+        });
     });
 
     $('#sitemap-btn').click('click', function () {

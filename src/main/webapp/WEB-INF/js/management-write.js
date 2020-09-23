@@ -1,34 +1,61 @@
+var selectYear;
+var listInfo = {};
+listInfo.idx = 0;
+listInfo.count = 20;
+function yearBind(startDay) {
+    var date = new Date();
+    if (!startDay) {
+        if (selectYear === '1') {
+            $('#man-startDay').val(date.format('yyyy-MM-dd'));
+            $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format('yyyy-MM-dd'));
+        } else if (selectYear === '2') {
+            $('#man-startDay').val(date.format('yyyy-MM-dd'));
+            $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format('yyyy-MM-dd'));
+        } else {
+            $('#man-endDay').val('');
+        }
+    } else {
+        var currentDay = $('#man-startDay').val().split('-');
+        date = new Date(currentDay[0], Number(currentDay[1]) - 1, currentDay[2]);
+        if (selectYear === '1') {
+            $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format('yyyy-MM-dd'));
+        } else if (selectYear === '2') {
+            $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format('yyyy-MM-dd'));
+        } else {
+            $('#man-endDay').val('');
+        }
+    }
+}
 $(document).ready(function () {
     $('.header').load('/resources/header.html?' + new Date().getTime());
+    $.ajax({
+        url: '/getSiteList',
+        type: 'post',
+        dataType: 'json',
+        data: JSON.stringify(listInfo),
+        contentType: 'application/json; charset=utf-8;',
+        success: function (result) {
+            $('#site').text('');
+            for (var item of result) {
+                $('#site').append('<span id="site-' + item.SITE_SEQ + '"><a>' + item.SITE_NAME + '</a></span>');
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        },
+    });
     /* date */
     $(document).on('click', '.year-btn', function (e) {
         $('.year-select').attr('class', 'year-btn');
         $(this).attr('class', 'year-select');
 
-        var date = new Date();
-        var year = e.target.id[4];
+        selectYear = e.target.id[4];
         var startDay = $('#man-startDay').val();
-        if (!startDay) {
-            if (year === '1') {
-                $('#man-startDay').val(date.format('yyyy-MM-dd'));
-                $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format('yyyy-MM-dd'));
-            } else if (year === '2') {
-                $('#man-startDay').val(date.format('yyyy-MM-dd'));
-                $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format('yyyy-MM-dd'));
-            } else {
-                $('#man-endDay').val('');
-            }
-        } else {
-            var currentDay = $('#man-startDay').val().split('-');
-            date = new Date(currentDay[0], Number(currentDay[1]) - 1, currentDay[2]);
-            if (year === '1') {
-                $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 1)).format('yyyy-MM-dd'));
-            } else if (year === '2') {
-                $('#man-endDay').val(new Date(date.setFullYear(date.getFullYear() + 2)).format('yyyy-MM-dd'));
-            } else {
-                $('#man-endDay').val('');
-            }
-        }
+        yearBind(startDay);
+    });
+    $(document).on('change', '#man-startDay', function () {
+        var startDay = $('#man-startDay').val();
+        yearBind(startDay);
     });
 
     /* modal toggle */

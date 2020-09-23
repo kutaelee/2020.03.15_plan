@@ -8,23 +8,45 @@
 <mapper namespace="site">
 
 	<insert id="siteInsert" parameterType="hashmap">
-		INSERT INTO SITE(SITE_NAME,SITE_ADDRESS,SITE_MANAGER,SITE_EMAIL,SITE_META_USER_SEQ,SITE_DESCRIPT) 
+		INSERT INTO
+		SITE(SITE_NAME,SITE_ADDRESS,SITE_MANAGER,SITE_EMAIL,SITE_META_USER_SEQ,SITE_DESCRIPT)
 		VALUES(#{name},#{addr},#{siteInfo},#{email},#{manSeq},#{desc})
 	</insert>
-	<select id="getSiteList" resultType="hashmap" parameterType="hashmap">
-		SELECT SITE_NAME,SITE_SEQ FROM SITE ORDER BY SITE_SEQ DESC LIMIT #{idx},#{count}
+	<select id="getSiteList" resultType="hashmap"
+		parameterType="hashmap">
+		SELECT SITE_NAME,SITE_SEQ FROM SITE ORDER BY SITE_SEQ
+		DESC LIMIT #{idx},#{count}
 	</select>
 	<select id="getSiteCount" resultType="int">
 		SELECT COUNT(*) FROM SITE
 	</select>
-	<select id="getSiteInfoBySeq" resultType="hashmap" parameterType="hashmap">
+	<select id="getSiteInfoBySeq" resultType="hashmap"
+		parameterType="hashmap">
 		SELECT * FROM SITE WHERE SITE_SEQ=#{seq}
 	</select>
 	<select id="lastSiteInfo" resultType="hashmap">
-		SELECT * FROM SITE ORDER BY SITE_SEQ DESC LIMIT 0,1
+		SELECT * FROM SITE ORDER BY
+		SITE_SEQ DESC LIMIT 0,1
 	</select>
-	<select id="getSiteListByName" resultType="hashmap" parameterType="hashmap">
-		SELECT SITE_NAME,SITE_SEQ FROM SITE WHERE SITE_NAME LIKE CONCAT('%',#{keyword},'%');
+	<select id="getSiteListByName" resultType="hashmap"
+		parameterType="hashmap">
+		SELECT SITE_NAME,SITE_SEQ FROM SITE WHERE SITE_NAME LIKE
+		CONCAT('%',#{keyword},'%');
 	</select>
+	<delete id="siteDelete" parameterType="hashmap">
+		DELETE FROM SITE WHERE
+		SITE_SEQ=#{seq}
+	</delete>
+	<update id="siteModify" parameterType="hashmap">
+		UPDATE SITE SET
+			SITE_NAME=#{name} 
+			,SITE_ADDRESS=#{addr} 
+			,SITE_MANAGER=#{siteInfo}
+			,SITE_EMAIL=#{email}
+			,SITE_META_USER_SEQ=#{manSeq}
+			,SITE_DESCRIPT=#{desc} 
+		WHERE 
+			SITE_SEQ=#{seq}
+	</update>
 </mapper>
   

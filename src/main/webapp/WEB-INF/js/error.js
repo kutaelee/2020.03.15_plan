@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $('.header').load('/resources/header.html?ver=16');
     $.ajax({
-        url: 'errorcode',
-        type: 'post',
+        url: '/errorcode',
+        type: 'get',
         success: function (result) {
             $('.error_msg').text(result);
         },
